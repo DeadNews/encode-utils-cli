@@ -10,6 +10,7 @@ from .util.timeconv import seconds2ts
 @click.command()
 @click.argument(
     "mpls",
+    required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
 @click.option(

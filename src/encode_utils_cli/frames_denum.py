@@ -4,7 +4,7 @@ from pyperclip import copy
 
 
 @click.command()
-@click.argument("frames", nargs=-1, type=int)
+@click.argument("frames", nargs=-1, required=True, type=int)
 @click.option("-d", "--denum", type=float, default=2)
 def frames_denum(frames: tuple[int], denum: float) -> None:
     """

@@ -10,6 +10,7 @@ from yaml import safe_load
 @click.argument(
     "episodes",
     nargs=-1,
+    required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
 @click.option(
@@ -23,7 +24,6 @@ def re_chapters(episodes: tuple[Path], config: Path) -> None:
     """
     Replace chapters names.
     """
-    # chap_count: [chap_mames]
     names = safe_load(config.read_text())
 
     for ep in episodes:

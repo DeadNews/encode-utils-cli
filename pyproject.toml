@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "encode-utils-cli"
-version = "0.0.1-alpha.1"
+version = "0.0.1"
 description = "Encode utils collection"
 authors = ["DeadNews <uhjnnn@gmail.com>"]
 license = "MIT"
@@ -83,6 +83,9 @@ skips = [
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
+
+[tool.coverage.report]
+exclude_lines = ["if __name__ == .__main__.:"]
 
 [tool.poe.tasks]
 isort = "isort . --check-only --diff"

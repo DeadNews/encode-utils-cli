@@ -12,6 +12,7 @@ from .util.source import source
 @click.argument(
     "vids",
     nargs=-1,
+    required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
 @click.option(

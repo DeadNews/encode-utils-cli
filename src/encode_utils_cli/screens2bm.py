@@ -13,6 +13,7 @@ from .util.timeconv import ts2f
 @click.argument(
     "screens",
     nargs=-1,
+    required=True,
     type=click.Path(dir_okay=False, path_type=PurePath),
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")

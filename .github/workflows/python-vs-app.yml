@@ -18,7 +18,7 @@ env:
 jobs:
   ci:
     name: Check code quality and Run tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -47,7 +47,6 @@ jobs:
         with:
           env_vars: OS,PYTHON
           fail_ci_if_error: true
-          verbose: true
 
   build-release:
     name: Build and release

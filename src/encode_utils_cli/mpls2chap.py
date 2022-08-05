@@ -20,10 +20,18 @@ from .util.timeconv import seconds2ts
     default=1,
     help="Number of first episode in mpls",
 )
-def mpls2chap(mpls: Path, start_ep: int) -> None:
+@click.option(
+    "-d",
+    "--out-dir",
+    type=click.Path(file_okay=False, path_type=Path),
+    help="Custom out dir",
+)
+def mpls2chap(mpls: Path, start_ep: int, out_dir: Path) -> None:
     """
     Make .txt chapters from .mpls
     """
+    out_dir = Path(mpls.parent) if out_dir is None else out_dir
+
     with mpls.open("rb") as data:
         chapterdata = load_mpls(data)[:-1]
 
@@ -34,4 +42,8 @@ def mpls2chap(mpls: Path, start_ep: int) -> None:
             f"CHAPTER{index:02d}NAME="
             for index, time in enumerate(ep.times)
         ]
-        Path(f"{mpls.parent}/e{number}.txt").write_text("\n".join(chapters))
+        Path(f"{out_dir}/e{number}.txt").write_text("\n".join(chapters))
+
+
+if __name__ == "__main__":
+    mpls2chap()

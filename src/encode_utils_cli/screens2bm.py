@@ -22,13 +22,16 @@ def screens2bm(screens: tuple[PurePath], fps: str) -> None:
     Parse screens timestamps hh:mm:ss.xxxx into bookmark format.
     The result will be copied to the clipboard.
 
+    \b
     >>> 00000 (00:12:34.34) 01.png
     <<< 18086
+    >>> 00000 (00_00_03.34) 02.png
+    <<< 80
     """
     frames = [
-        f"{ts2f(ts=ts.group(1), fps=Fraction(fps))}"
+        f"{ts2f(ts=ts.group(1).replace('_', ':'), fps=Fraction(fps))}"
         for screen in screens
-        if (ts := search(r"(\d+:\d+:\d+\.\d+)", screen.stem))
+        if (ts := search(r"(\d+[:_]\d+[:_]\d+\.\d+)", screen.stem))
     ]
     bookmark = ", ".join(frames) + "\n"
     click.echo(bookmark)

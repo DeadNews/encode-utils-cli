@@ -19,7 +19,7 @@ from .util.source import source
     "-d",
     "--out-dir",
     type=click.Path(file_okay=False, path_type=Path),
-    help="Out dir",
+    help="Custom out dir",
 )
 @click.option("-f", "--frames", type=str, help="Frames")
 @click.option("-o", "--offset", type=int, default=0, help="Offset for clip")
@@ -73,7 +73,3 @@ def open_clip(video: Path, drop_prop: bool, offset: int, crop: int) -> VideoNode
         clip = clip.std.CropRel(top=crop, bottom=crop)
 
     return clip
-
-
-if __name__ == "__main__":
-    vs_screens()

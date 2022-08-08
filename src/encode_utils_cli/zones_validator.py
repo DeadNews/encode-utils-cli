@@ -2,7 +2,7 @@
 from pathlib import Path
 
 import click
-from schema import Regex, Schema, SchemaError
+from schema import Regex, Schema
 
 
 @click.command()
@@ -12,20 +12,20 @@ from schema import Regex, Schema, SchemaError
 )
 def zones_validator(zones_config: Path) -> None:
     """
-    Validate x265 zones.
+    Validate x264/x265 zones.
     """
     text = zones_config.read_text()
 
-    error_lines = []
-    for line in text.split("\n"):
-        if line and not line.isspace() and not line.lstrip().startswith("#"):
-            try:
-                for zone in line.split(": ")[1].split("/"):
-                    Schema(Regex(r"^\d+,\d+,b=\d\.\d+$")).validate(zone)
-            except SchemaError:
-                error_lines.append(line)
+    targe_lines = [
+        line
+        for line in text.splitlines()
+        if line and not line.isspace() and not line.lstrip().startswith("#")
+    ]
 
-    if error_lines:
-        click.echo("validate_errors:")
-        for line in error_lines:
-            click.echo(line.replace("\n", ""))
+    for line in targe_lines:
+        if error_zones := [
+            zone
+            for zone in line.split(": ")[1].split("/")
+            if not Schema(Regex(r"^\d+,\d+,b=\d\.\d+$")).is_valid(zone)
+        ]:
+            click.echo(f"{line} <- {error_zones}")

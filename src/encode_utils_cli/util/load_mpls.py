@@ -11,25 +11,22 @@ class PlayList(NamedTuple):
 
 def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
     """
-    Parse blu-ray .mpls
-    https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
+        Parse blu-ray .mpls
+        https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
 
     >>> [
-    >>>     PlayList(
-    >>>         name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]
-    >>>     ),
-    >>>     PlayList(
-    >>>         name="00015", times=[189000000, 200779267, 223110326, 249510450, 253620806]
-    >>>     ),
+    >>>     PlayList(name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]),
+    >>>     PlayList(name="00015", times=[189000000, 200779267, 223110326, 249510450, 253620806]),
     >>> ]
     """
 
     def int_be(data: bytes) -> int:
-        return {
+        funcs = {
             1: ord,
             2: lambda b: unpack(">H", b)[0],
             4: lambda b: unpack(">I", b)[0],
-        }[len(data)](data)
+        }
+        return funcs[len(data)](data)
 
     f.seek(8)
     addr_items, addr_marks = int_be(f.read(4)), int_be(f.read(4))

@@ -49,14 +49,9 @@ def test_screens2bm(runner):
 
 
 def test_zones_validator(runner):
+    assert runner.invoke(cli, ["zones-validator", "tests/test_files/zones.txt"]).output == ""
     assert (
-        runner.invoke(cli, ["zones-validator", "tests/test_files/zones.txt"]).output
-        == ""
-    )
-    assert (
-        runner.invoke(
-            cli, ["zones-validator", "tests/test_files/zones_broken.txt"]
-        ).output
+        runner.invoke(cli, ["zones-validator", "tests/test_files/zones_broken.txt"]).output
         == "e2: 4173,6329,b=0.50/31888,34045,b=0.70/32158,b=0.39/33764,b=0.42/34046,34117,b=0.50 <- ['32158,b=0.39', '33764,b=0.42']\n"
     )
 

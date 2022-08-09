@@ -19,11 +19,7 @@ from .util.timeconv import ts2f
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
 @click.option(
-    "-v",
-    "--vid-info",
-    is_flag=True,
-    default=False,
-    help="Get corresponding videos info",
+    "-v", "--vid-info", is_flag=True, default=False, help="Get corresponding videos info"
 )
 @click.option(
     "-c",
@@ -45,13 +41,9 @@ def chapt2bmqpyml(
         chapters = ep.read_text()
 
         clip = source(Path(f"{ep.parents[1]}/{ep.stem}.mp4")) if vid_info else None
-        fps_ = Fraction(
-            fps if clip is None else clip.fps.numerator / clip.fps.denominator
-        )
+        fps_ = Fraction(fps if clip is None else clip.fps.numerator / clip.fps.denominator)
 
-        names = [
-            sub(r"[ ,]", "_", name) for name in findall(r"NAME=([^\n]+)", chapters)
-        ]
+        names = [sub(r"[ ,]", "_", name) for name in findall(r"NAME=([^\n]+)", chapters)]
         frames = [ts2f(ts, fps_) for ts in findall(r"\d+=(\d+:\d+:\d+\.\d+)", chapters)]
 
         if custom_layout:

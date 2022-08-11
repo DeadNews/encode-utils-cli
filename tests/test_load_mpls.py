@@ -5,7 +5,7 @@ from src.encode_utils_cli.util.load_mpls import PlayList, load_mpls
 
 
 def test_load_mpls():
-    with Path("tests/test_files/00000.mpls").open("rb") as data:
+    with Path("tests/resources/00000.mpls").open("rb") as data:
         assert load_mpls(data) == [
             PlayList(
                 name="00000",

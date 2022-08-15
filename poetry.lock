@@ -224,12 +224,38 @@ attrs = ">=19.3"
 more-itertools = ">=8.0.2,<9"
 
 [[package]]
+name = "flake8-pie"
+version = "0.16.0"
+description = "A flake8 extension that implements misc. lints"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+typing_extensions = "*"
+
+[[package]]
 name = "flake8-plugin-utils"
 version = "1.3.2"
 description = "The package provides base classes and utils for flake8 plugin writing"
 category = "dev"
 optional = false
 python-versions = ">=3.6,<4.0"
+
+[[package]]
+name = "flake8-pyproject"
+version = "1.1.0.post0"
+description = "Flake8 plug-in loading the configuration from pyproject.toml"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Flake8 = ">=5,<6"
+TOMLi = {version = "*", markers = "python_version < \"3.11\""}
+
+[package.extras]
+test = ["pytest-cov", "pytest"]
 
 [[package]]
 name = "flake8-pytest-style"
@@ -264,6 +290,17 @@ python-versions = "*"
 
 [package.dependencies]
 flake8 = ">3.0.0"
+
+[[package]]
+name = "flake8-use-pathlib"
+version = "0.3.0"
+description = "A plugin for flake8 finding use of functions that can be replaced by pathlib module."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = ">=3.6"
 
 [[package]]
 name = "gitdb"
@@ -739,7 +776,7 @@ vapoursynth-portable = ["vapoursynth-portable"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "cc087a40103b496c9159329602edf93437d59d092addbcf7dcf856e02b437a8d"
+content-hash = "d5c1d1ce99cb7a0cafac9ac300480b75a64437aedafca64e6d922e0208bf818e"
 
 [metadata.files]
 astor = [
@@ -812,16 +849,22 @@ flake8-implicit-str-concat = [
     {file = "flake8_implicit_str_concat-0.3.0-py2.py3-none-any.whl", hash = "sha256:a89ebc50567790fb7b83e032ed4014ae0db70e35d89e269c3323967135023600"},
     {file = "flake8_implicit_str_concat-0.3.0.tar.gz", hash = "sha256:c0e6ae227e46238e4c87844091f8072892caeccd3bb266576a7d449eadbf53a0"},
 ]
+flake8-pie = [
+    {file = "flake8-pie-0.16.0.tar.gz", hash = "sha256:b8dcb7b92706fa33d05d92a4b3e49b7a9fd3f0041849166275b646ba50e515ba"},
+    {file = "flake8_pie-0.16.0-py3-none-any.whl", hash = "sha256:24cd7849b0eee22e2328b9e9d2a1dea40013b0a3106864bbadd06a4b05dbb71f"},
+]
 flake8-plugin-utils = [
     {file = "flake8-plugin-utils-1.3.2.tar.gz", hash = "sha256:20fa2a8ca2decac50116edb42e6af0a1253ef639ad79941249b840531889c65a"},
     {file = "flake8_plugin_utils-1.3.2-py3-none-any.whl", hash = "sha256:1fe43e3e9acf3a7c0f6b88f5338cad37044d2f156c43cb6b080b5f9da8a76f06"},
 ]
+flake8-pyproject = []
 flake8-pytest-style = [
     {file = "flake8-pytest-style-1.6.0.tar.gz", hash = "sha256:c1175713e9e11b78cd1a035ed0bca0d1e41d09c4af329a952750b61d4194ddac"},
     {file = "flake8_pytest_style-1.6.0-py3-none-any.whl", hash = "sha256:5fedb371a950e9fe0e0e6bfc854be7d99151271208f34cd2cc517681ece27780"},
 ]
 flake8-simplify = []
 flake8-unused-arguments = []
+flake8-use-pathlib = []
 gitdb = [
     {file = "gitdb-4.0.9-py3-none-any.whl", hash = "sha256:8033ad4e853066ba6ca92050b9df2f89301b8fc8bf7e9324d412a63f8bf1a8fd"},
     {file = "gitdb-4.0.9.tar.gz", hash = "sha256:bac2fd45c0a1c9cf619e63a90d62bdc63892ef92387424b855792a6cabe789aa"},

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 from fractions import Fraction
 
 from src.encode_utils_cli.util.timeconv import seconds2f, seconds2ts, ts2f, ts2seconds

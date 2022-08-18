@@ -15,7 +15,7 @@ classifiers = [
 ]
 
 [tool.poetry.scripts]
-encode-utils-cli = "encode_utils_cli.cli:cli"
+encode-utils-cli = "encode_utils_cli._cli:cli"
 
 [tool.poetry.dependencies]
 python = "^3.10"

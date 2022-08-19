@@ -33,3 +33,8 @@ Commands:
   vs-screens       Screens via Vapoursynth.
   zones-validator  Validate x264/x265 zones.
 ```
+
+
+## CLI Reference
+
+<https://DeadNews.github.io/encode-utils-cli>

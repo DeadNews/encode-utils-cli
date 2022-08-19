@@ -19,12 +19,12 @@ from .util.source import source
     "-d",
     "--out-dir",
     type=click.Path(file_okay=False, path_type=Path),
-    help="Custom out dir",
+    help="Custom out dir.",
 )
-@click.option("-f", "--frames", type=str, help="Frames")
-@click.option("-o", "--offset", type=int, default=0, help="Offset for clip")
-@click.option("-c", "--crop", type=int, default=0, help="CropRel args")
-@click.option("-p", "--drop-prop", is_flag=True, help="Delete frame prop")
+@click.option("-f", "--frames", type=str, help="Frames. Format: '1 2 3'.")
+@click.option("-o", "--offset", type=int, default=0, help="Offset for clip.")
+@click.option("-c", "--crop", type=int, default=0, help="CropRel args.")
+@click.option("-p", "--drop-prop", is_flag=True, help="Delete frame prop.")
 def vs_screens(
     vids: tuple[Path],
     out_dir: Path,

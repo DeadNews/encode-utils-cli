@@ -13,7 +13,7 @@ from tomli import loads
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help=".toml config",
+    help="toml config.",
 )
 def re_titles(config: Path) -> None:
     """
@@ -21,8 +21,8 @@ def re_titles(config: Path) -> None:
     The result will be copied to the clipboard.
 
     \b
-    >>> 1 	The Prince`s New Clothes
-    <<< e1: EP1 «The Prince`s New Clothes»
+    >>> 1 	The Prince's New Clothes
+    <<< e1: EP1 «The Prince's New Clothes»
     """
     titles = loads(config.read_text())["titles"]
 

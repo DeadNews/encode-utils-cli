@@ -19,14 +19,14 @@ from .util.timeconv import ts2f
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
 @click.option(
-    "-v", "--vid-info", is_flag=True, default=False, help="Get corresponding videos info"
+    "-v", "--vid-info", is_flag=True, default=False, help="Get corresponding videos info."
 )
 @click.option(
     "-c",
     "--custom-layout",
     is_flag=True,
     default=False,
-    help="Custom layout",
+    help="Custom layout.",
 )
 def chapt2bmqpyml(
     episodes: tuple[Path],

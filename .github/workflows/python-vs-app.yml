@@ -48,6 +48,9 @@ jobs:
           env_vars: OS,PYTHON
           fail_ci_if_error: true
 
+      - name: Poetry install
+        run: poetry install
+
       - name: Publish docs
         run: |
           git config user.name 'github-actions[bot]'

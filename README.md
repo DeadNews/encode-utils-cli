@@ -37,4 +37,4 @@ Commands:
 
 ## CLI Reference
 
-<https://DeadNews.github.io/encode-utils-cli>
+<https://deadnews.github.io/encode-utils-cli>

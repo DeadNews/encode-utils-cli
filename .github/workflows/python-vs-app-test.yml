@@ -54,7 +54,7 @@ jobs:
         run: pipx install poetry
 
       - name: Install pip vapoursynth
-        run: pipx install vapoursynth
+        run: pip install vapoursynth
 
       - uses: actions/setup-python@v4
         with:

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 
-from encode_utils_cli.util.timeconv import seconds2f, seconds2ts, ts2f, ts2seconds
+from src.encode_utils_cli.util.timeconv import seconds2f, seconds2ts, ts2f, ts2seconds
 
 
 def test_timeconv():

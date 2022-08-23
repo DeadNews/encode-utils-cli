@@ -44,7 +44,7 @@ jobs:
           git clone https://github.com/vapoursynth/vapoursynth --depth 1
           pushd vapoursynth
           ./autogen.sh
-          ./configure --disable-static --disable-x86-asm --disable-vsscript --disable-vspipe
+          ./configure
           make -j2
           sudo make install -j2
           popd

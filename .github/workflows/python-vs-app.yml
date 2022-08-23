@@ -1,72 +1,72 @@
-name: CI/CD
+# name: CI/CD
 
-on:
-  push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
-  release:
-    types: [created]
+# on:
+#   push:
+#     branches: [main, dev]
+#   pull_request:
+#     branches: [main, dev]
+#   release:
+#     types: [created]
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
-env:
-  PYTHON_VERSION: "3.10"
-  FORCE_COLOR: 1
+# env:
+#   PYTHON_VERSION: "3.10"
+#   FORCE_COLOR: 1
 
-jobs:
-  ci:
-    name: Check code quality and Run tests
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
+# jobs:
+#   ci:
+#     name: Check code quality and Run tests
+#     runs-on: windows-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Install poetry
-        run: pipx install poetry
+#       - name: Install poetry
+#         run: pipx install poetry
 
-      - name: Export dependencies
-        run: poetry export -f requirements.txt --without-hashes --dev --extras vapoursynth-portable --output requirements.txt
+#       - name: Export dependencies
+#         run: poetry export -f requirements.txt --without-hashes --dev --extras vapoursynth-portable --output requirements.txt
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: ${{ env.PYTHON_VERSION }}
+#           cache: pip
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+#       - name: Install dependencies
+#         run: pip install -r requirements.txt
 
-      - name: Check code quality
-        run: poetry run poe ci
+#       - name: Check code quality
+#         run: poetry run poe ci
 
-      - name: Run tests
-        run: poetry run pytest --cov-report=xml
+#       - name: Run tests
+#         run: poetry run pytest --cov-report=xml
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          env_vars: OS,PYTHON
-          fail_ci_if_error: true
+#       - name: Upload coverage to Codecov
+#         uses: codecov/codecov-action@v3
+#         with:
+#           env_vars: OS,PYTHON
+#           fail_ci_if_error: true
 
-  build-release:
-    name: Build and release
-    if: github.event_name == 'release' && github.event.action == 'created'
-    needs: [ci]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+#   build-release:
+#     name: Build and release
+#     if: github.event_name == 'release' && github.event.action == 'created'
+#     needs: [ci]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Install poetry
-        run: pipx install poetry
+#       - name: Install poetry
+#         run: pipx install poetry
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Build package
-        run: poetry build
+#       - name: Build package
+#         run: poetry build
 
-      - name: Publish package to PyPI
-        run: poetry publish --no-interaction
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+#       - name: Publish package to PyPI
+#         run: poetry publish --no-interaction
+#         env:
+#           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}

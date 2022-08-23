@@ -1,0 +1,71 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.10"
+  FORCE_COLOR: 1
+
+jobs:
+  ci:
+    name: Check code quality and Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install GCC 12
+        run: sudo apt install g++-12
+
+      - name: Install meson
+        run: pipx install meson
+
+      - name: Install ninja
+        run: sudo apt install ninja-build
+
+      - name: Install zimg
+        run: sudo apt install libzimg-dev
+
+      - name: Install VapourSynth
+        run: |
+          git clone https://github.com/vapoursynth/vapoursynth --depth 1
+          pushd vapoursynth
+          ./autogen.sh
+          ./configure --disable-static --disable-x86-asm --disable-vsscript --disable-vspipe --disable-python-module
+          make -j2
+          sudo make install -j2
+          popd
+          rm -rf vapoursynth
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: poetry
+
+      - name: Install dependencies
+        run: |
+          poetry env use ${{ env.PYTHON_VERSION }}
+          poetry install
+
+      - name: Check code quality
+        run: poetry run poe ci
+
+      - name: Run tests
+        run: poetry run pytest --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true

@@ -86,3 +86,4 @@ repos:
           - mdformat-toc
           - mdformat-gfm
           - mdformat-black
+        exclude: index.md

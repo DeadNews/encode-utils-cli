@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.sencode_utils_cli.util.load_mpls import PlayList, load_mpls
+from src.encode_utils_cli.util.load_mpls import PlayList, load_mpls
 
 
 def test_load_mpls():

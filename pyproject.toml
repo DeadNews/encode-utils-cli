@@ -119,3 +119,7 @@ sequence = ["isort", "black", "mypy", "flake8", "bandit", "safety"]
 [tool.poe.tasks.pc]
 help = "pre-commit"
 cmd = "pre-commit run --all-files"
+
+[tool.poe.tasks.mk]
+help = "Publish docs"
+cmd = "mkdocs gh-deploy"

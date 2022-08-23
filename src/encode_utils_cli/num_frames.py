@@ -3,7 +3,7 @@ from pathlib import Path
 
 import click
 
-from .util.source import source
+from encode_utils_cli.util.source import source
 
 
 @click.command()

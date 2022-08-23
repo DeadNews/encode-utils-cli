@@ -1,4 +1,3 @@
-
 ::: mkdocs-click
     :module: encode_utils_cli._cli
     :command: cli

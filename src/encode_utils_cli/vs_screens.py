@@ -5,7 +5,7 @@ from random import sample
 import click
 from vapoursynth import RGB24, VideoNode, core
 
-from .util.source import source
+from encode_utils_cli.util.source import source
 
 
 @click.command()

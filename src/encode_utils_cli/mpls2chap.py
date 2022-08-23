@@ -3,8 +3,8 @@ from pathlib import Path
 
 import click
 
-from .util.load_mpls import load_mpls
-from .util.timeconv import seconds2ts
+from encode_utils_cli.util.load_mpls import load_mpls
+from encode_utils_cli.util.timeconv import seconds2ts
 
 
 @click.command()

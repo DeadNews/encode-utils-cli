@@ -34,7 +34,6 @@ Commands:
   zones-validator  Validate x264/x265 zones.
 ```
 
-
 ## CLI Reference
 
 <https://deadnews.github.io/encode-utils-cli>

@@ -21,8 +21,8 @@ def re_titles(config: Path) -> None:
     The result will be copied to the clipboard.
 
     \b
-    >>> 1 	The Prince's New Clothes
-    <<< e1: EP1 «The Prince's New Clothes»
+    >>> 1 	The Prince`s New Clothes
+    <<< e1: EP1 «The Prince`s New Clothes»
     """
     titles = loads(config.read_text())["titles"]
 

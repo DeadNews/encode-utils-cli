@@ -6,8 +6,8 @@ from re import findall, sub
 import click
 from yaml import dump
 
-from .util.source import source
-from .util.timeconv import ts2f
+from encode_utils_cli.util.source import source
+from encode_utils_cli.util.timeconv import ts2f
 
 
 @click.command()

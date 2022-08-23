@@ -22,24 +22,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: poetry
-
       - name: Install GCC 12
         run: |
           sudo apt-get update
           sudo apt-get install g++-12
-
-      - name: Install meson
-        run: pipx install meson
 
       - name: Install ninja
         run: sudo apt-get install ninja-build
 
       - name: Install zimg
         run: sudo apt-get install libzimg-dev
+
+      - name: Install meson
+        run: pipx install meson
 
       - name: Install VapourSynth
         run: |
@@ -54,6 +49,11 @@ jobs:
 
       - name: Install poetry
         run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: poetry
 
       - name: Install dependencies
         run: |

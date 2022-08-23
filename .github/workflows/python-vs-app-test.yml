@@ -27,16 +27,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install g++-12
 
-      - name: Install ninja
-        run: sudo apt-get install ninja-build
-
       - name: Install zimg
         run: sudo apt-get install libzimg-dev
+
+      - name: Install ninja
+        run: sudo apt-get install ninja-build
 
       - name: Install meson
         run: pipx install meson
 
-      - name: Install VapourSynth
+      - name: Install vapoursynth
         run: |
           git clone https://github.com/vapoursynth/vapoursynth --depth 1
           pushd vapoursynth

@@ -22,6 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: poetry
+
       - name: Install GCC 12
         run: |
           sudo apt-get update
@@ -49,11 +54,6 @@ jobs:
 
       - name: Install poetry
         run: pipx install poetry
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: poetry
 
       - name: Install dependencies
         run: |

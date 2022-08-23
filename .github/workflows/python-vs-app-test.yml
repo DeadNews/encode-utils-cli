@@ -18,16 +18,20 @@ env:
 jobs:
   ci:
     name: Check code quality and Run tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
 
       - name: Install GCC 12
         run: |
-          sudo apt-get update
-          sudo apt-get install g++-12
-          sudo apt-get install ninja-build
-          sudo apt-get install libzimg-dev
+          sudo apt update
+          sudo apt install g++-12
+
+      - name: Install ninja
+        run: sudo apt install ninja-build
+
+      - name: Install zimg
+        run: sudo apt install libzimg-dev
 
       - name: Install meson
         run: pipx install meson

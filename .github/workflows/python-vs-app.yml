@@ -17,7 +17,7 @@ env:
 
 jobs:
   ci:
-    name: Code quality / Run tests / Publish docs
+    name: CI
     strategy:
       fail-fast: false
       matrix:
@@ -43,7 +43,7 @@ jobs:
           git clone https://github.com/vapoursynth/vapoursynth --depth 1 -b ${{ matrix.vapoursynth-version }}
           pushd vapoursynth
           ./autogen.sh
-          ./configure --disable-x86-asm --disable-vspipe
+          ./configure --disable-x86-asm --disable-vsscript --disable-vspipe
           make -j2
           sudo make install -j2
           popd

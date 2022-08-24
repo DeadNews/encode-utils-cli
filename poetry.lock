@@ -187,7 +187,7 @@ pyflakes = ">=2.5.0,<2.6.0"
 
 [[package]]
 name = "flake8-bugbear"
-version = "22.8.22"
+version = "22.8.23"
 description = "A plugin for flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle."
 category = "dev"
 optional = false
@@ -905,17 +905,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "vapoursynth-portable"
-version = "59"
-description = "A frameserver for the 21st century"
-category = "main"
-optional = true
-python-versions = "*"
-
-[package.dependencies]
-vapoursynth = "59"
-
-[[package]]
 name = "virtualenv"
 version = "20.16.3"
 description = "Virtual Python Environment builder"
@@ -955,13 +944,10 @@ python-versions = ">=3.7"
 docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "jaraco.tidelift (>=1.4)"]
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
 
-[extras]
-vapoursynth-portable = ["vapoursynth-portable"]
-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d6e3f5b3db0a87b0b26006b7a6041ddfa417d68cf9c8f030f8681d1f0e14c1b8"
+content-hash = "de51a2c96f12d88d3c0fa664800059c4a70a84fbd0bd496438348ece0bc1c3fe"
 
 [metadata.files]
 astor = [
@@ -1077,8 +1063,8 @@ dparse = []
 filelock = []
 flake8 = []
 flake8-bugbear = [
-    {file = "flake8-bugbear-22.8.22.tar.gz", hash = "sha256:1d240736dc93ecad9ff21e1d521283b9461d132b3ff2170569bd5ff3dacda385"},
-    {file = "flake8_bugbear-22.8.22-py3-none-any.whl", hash = "sha256:b5718bf5d0d28a4cfd15054f4706fc2936f7339ed8366b919a1979eb5df50764"},
+    {file = "flake8-bugbear-22.8.23.tar.gz", hash = "sha256:de0717d11124a082118dd08387b34fd86b2721642ec2d8e92be66cfa5ea7c445"},
+    {file = "flake8_bugbear-22.8.23-py3-none-any.whl", hash = "sha256:1b0ebe0873d1cd55bf9f1588bfcb930db339018ef44a3981a26532daa9fd14a8"},
 ]
 flake8-builtins = [
     {file = "flake8-builtins-1.5.3.tar.gz", hash = "sha256:09998853b2405e98e61d2ff3027c47033adbdc17f9fe44ca58443d876eb00f3b"},
@@ -1362,7 +1348,6 @@ urllib3 = [
     {file = "urllib3-1.26.12.tar.gz", hash = "sha256:3fa96cf423e6987997fc326ae8df396db2a8b7c667747d47ddd8ecba91f4a74e"},
 ]
 vapoursynth = []
-vapoursynth-portable = []
 virtualenv = []
 watchdog = [
     {file = "watchdog-2.1.9-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:a735a990a1095f75ca4f36ea2ef2752c99e6ee997c46b0de507ba40a09bf7330"},

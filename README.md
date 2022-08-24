@@ -11,27 +11,8 @@
 
 ```sh
 pip install encode-utils-cli
-```
-
-## Usage
-
-```sh
-Usage: encode-utils-cli [OPTIONS] COMMAND [ARGS]...
-
-Options:
-  --version   Show the version and exit.
-  -h, --help  Show this message and exit.
-
-Commands:
-  chapt2bmqpyml    Convert chapters into yaml, corresponding bookmarks...
-  frames-denum     Sort frames and divide without remainder by the...
-  mpls2chap        Make .txt chapters from .mpls
-  num-frames       Print clip num frames.
-  re-chapters      Replace chapters names.
-  re-titles        Replace titles names from anidb.
-  screens2bm       Parse screens timestamps hh:mm:ss.xxxx into bookmark...
-  vs-screens       Screens via Vapoursynth.
-  zones-validator  Validate x264/x265 zones.
+# or
+pipx install encode-utils-cli
 ```
 
 ## CLI Reference

@@ -50,6 +50,9 @@ jobs:
           popd
           rm -rf vapoursynth
 
+      - name: Test vapoursynth
+        run: python -c "from vapoursynth import core; print(f'{core}')"
+
       - name: Install poetry
         run: pipx install poetry
 

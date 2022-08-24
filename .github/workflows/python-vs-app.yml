@@ -56,7 +56,7 @@ jobs:
           rm -rf vapoursynth
 
       - name: Install poetry
-        run: pipx install poetry
+        run: pip install poetry
 
       - uses: actions/setup-python@v4
         with:

@@ -75,7 +75,9 @@ jobs:
           fail_ci_if_error: true
 
       - name: Generate and Publish docs
-        run: poetry run mkdocs gh-deploy
+        run: |
+          git remote add gh-token "git@github.com:DeadNews/encode-utils-cli.git"
+          poetry run mkdocs gh-deploy
 
   build-release:
     name: Build and release

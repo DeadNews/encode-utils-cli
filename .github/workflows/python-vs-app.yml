@@ -1,72 +1,77 @@
-# name: CI/CD
+name: CI/CD
 
-# on:
-#   push:
-#     branches: [main, dev]
-#   pull_request:
-#     branches: [main, dev]
-#   release:
-#     types: [created]
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  release:
+    types: [created]
 
-# permissions:
-#   contents: read
+permissions:
+  contents: read
 
-# env:
-#   PYTHON_VERSION: "3.10"
-#   FORCE_COLOR: 1
+env:
+  PYTHON_VERSION: "3.10"
+  FORCE_COLOR: 1
 
-# jobs:
-#   ci:
-#     name: Check code quality and Run tests
-#     runs-on: windows-latest
-#     steps:
-#       - uses: actions/checkout@v3
+jobs:
+  ci:
+    name: Check code quality and Run tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Install poetry
-#         run: pipx install poetry
+      - name: Install GCC 12
+        run: |
+          sudo apt update
+          sudo apt install g++-12
 
-#       - name: Export dependencies
-#         run: poetry export -f requirements.txt --without-hashes --dev --extras vapoursynth-portable --output requirements.txt
+      - name: Install ninja
+        run: sudo apt install ninja-build
 
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: ${{ env.PYTHON_VERSION }}
-#           cache: pip
+      - name: Install zimg
+        run: sudo apt install libzimg-dev
 
-#       - name: Install dependencies
-#         run: pip install -r requirements.txt
+      - name: Install Cython
+        run: sudo apt install cython3
 
-#       - name: Check code quality
-#         run: poetry run poe ci
+      - name: Install meson
+        run: pipx install meson
 
-#       - name: Run tests
-#         run: poetry run pytest --cov-report=xml
+      - name: Install vapoursynth
+        run: |
+          git clone https://github.com/vapoursynth/vapoursynth --depth 1
+          pushd vapoursynth
+          git checkout R59
+          ./autogen.sh
+          ./configure
+          make -j2
+          sudo make install -j2
+          popd
+          rm -rf vapoursynth
 
-#       - name: Upload coverage to Codecov
-#         uses: codecov/codecov-action@v3
-#         with:
-#           env_vars: OS,PYTHON
-#           fail_ci_if_error: true
+      - name: Install poetry
+        run: pipx install poetry
 
-#   build-release:
-#     name: Build and release
-#     if: github.event_name == 'release' && github.event.action == 'created'
-#     needs: [ci]
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: poetry
 
-#       - name: Install poetry
-#         run: pipx install poetry
+      - name: Install dependencies
+        run: |
+          poetry env use ${{ env.PYTHON_VERSION }}
+          poetry install
 
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: ${{ env.PYTHON_VERSION }}
+      - name: Check code quality
+        run: poetry run poe ci
 
-#       - name: Build package
-#         run: poetry build
+      - name: Run tests
+        run: LD_LIBRARY_PATH=/usr/local/lib  poetry run pytest --cov-report=xml
 
-#       - name: Publish package to PyPI
-#         run: poetry publish --no-interaction
-#         env:
-#           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true

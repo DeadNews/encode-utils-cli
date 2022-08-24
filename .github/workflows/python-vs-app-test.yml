@@ -50,8 +50,15 @@ jobs:
           popd
           rm -rf vapoursynth
 
+      - run: ls -lh /usr/local/lib/python3.10/site-packages/vapoursynth.so
+
       - name: Install pip vapoursynth
         run: pip install vapoursynth
+
+      - run: ls -lh /usr/local/lib/python3.10/site-packages/vapoursynth.so
+
+      - name: Test vspipe
+        run: PYTHONPATH=/usr/local/lib/python3.10/site-packages vspipe --version
 
       - name: Test vapoursynth
         run: PYTHONPATH=/usr/local/lib/python3.10/site-packages  python -c "from vapoursynth import core; print(f'{core}')"

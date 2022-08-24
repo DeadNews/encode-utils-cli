@@ -43,7 +43,7 @@ jobs:
           git clone https://github.com/vapoursynth/vapoursynth --depth 1 -b ${{ matrix.vapoursynth-version }}
           pushd vapoursynth
           ./autogen.sh
-          ./configure
+          ./configure --disable-x86-asm --disable-vspipe
           make -j2
           sudo make install -j2
           popd
@@ -74,11 +74,11 @@ jobs:
           env_vars: OS,PYTHON
           fail_ci_if_error: true
 
-      - name: Publish docs
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-          poetry run mkdocs gh-deploy
+      # - name: Publish docs
+      #   run: |
+      #     git config user.name 'github-actions[bot]'
+      #     git config user.email 'github-actions[bot]@users.noreply.github.com'
+      #     poetry run mkdocs gh-deploy
 
   build-release:
     name: Build and release

@@ -78,7 +78,7 @@ jobs:
 
       - name: Generate and Publish docs
         run: |
-          poetry run mkdocs gh-deploy
+          poetry run mkdocs gh-deploy --force
 
   build-release:
     name: Build and release

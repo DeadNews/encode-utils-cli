@@ -58,10 +58,10 @@ jobs:
       - run: ls -lh /usr/local/lib/python3.10/site-packages/vapoursynth.so
 
       - name: Test vspipe
-        run: LD_LIBRARY_PATH=/usr/local/lib  PYTHONPATH=/usr/local/lib/python3.10/site-packages  vspipe --version
+        run: LD_LIBRARY_PATH=/usr/local/lib    vspipe --version
 
       - name: Test vapoursynth
-        run: LD_LIBRARY_PATH=/usr/local/lib  PYTHONPATH=/usr/local/lib/python3.10/site-packages  python -c "from vapoursynth import core; print(f'{core}')"
+        run: LD_LIBRARY_PATH=/usr/local/lib    python -c "from vapoursynth import core; print(f'{core}')"
 
       - name: Install poetry
         run: pipx install poetry

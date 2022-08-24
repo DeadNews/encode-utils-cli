@@ -78,6 +78,8 @@ jobs:
 
       - name: Generate and Publish docs
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           poetry run mkdocs gh-deploy --force
 
   build-release:

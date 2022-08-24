@@ -49,20 +49,6 @@ jobs:
           sudo make install -j2
           popd
           rm -rf vapoursynth
-          export LD_LIBRARY_PATH=/usr/local/lib
-
-      - run: ls -lh /usr/local/lib/python3.10/site-packages/vapoursynth.so
-
-      - name: Install pip vapoursynth
-        run: pip install vapoursynth
-
-      - run: ls -lh /usr/local/lib/python3.10/site-packages/vapoursynth.so
-
-      - name: Test vspipe
-        run: vspipe --version
-
-      - name: Test vapoursynth
-        run: python -c "from vapoursynth import core; print(f'{core}')"
 
       - name: Install poetry
         run: pipx install poetry
@@ -81,7 +67,7 @@ jobs:
         run: poetry run poe ci
 
       - name: Run tests
-        run: poetry run pytest --cov-report=xml
+        run: LD_LIBRARY_PATH=/usr/local/lib  poetry run pytest --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

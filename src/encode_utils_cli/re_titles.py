@@ -13,7 +13,7 @@ from tomli import loads
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help=".toml config",
+    help="toml config.",
 )
 def re_titles(config: Path) -> None:
     """

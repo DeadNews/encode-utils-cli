@@ -6,7 +6,7 @@ from re import search
 import click
 from pyperclip import copy
 
-from .util.timeconv import ts2f
+from encode_utils_cli.util.timeconv import ts2f
 
 
 @click.command()

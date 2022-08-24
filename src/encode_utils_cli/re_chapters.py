@@ -18,7 +18,7 @@ from yaml import safe_load
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help=".yaml config",
+    help="yaml config.",
 )
 def re_chapters(episodes: tuple[Path], config: Path) -> None:
     """

@@ -50,14 +50,14 @@ jobs:
           popd
           rm -rf vapoursynth
 
+      - name: Install pip vapoursynth
+        run: pip install vapoursynth
+
       - name: Test vapoursynth
         run: python -c "from vapoursynth import core; print(f'{core}')"
 
       - name: Install poetry
         run: pipx install poetry
-
-      - name: Install pip vapoursynth
-        run: pip install vapoursynth
 
       - uses: actions/setup-python@v4
         with:

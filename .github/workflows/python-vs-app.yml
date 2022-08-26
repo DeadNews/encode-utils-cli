@@ -81,6 +81,7 @@ jobs:
           fail_ci_if_error: true
 
       - name: Generate and Publish docs
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com

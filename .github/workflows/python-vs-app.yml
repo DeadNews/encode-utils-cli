@@ -80,8 +80,16 @@ jobs:
           env_vars: OS,PYTHON
           fail_ci_if_error: true
 
+      - name: Check src files changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'src/**'
+
       - name: Generate and Publish docs
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && steps.changes.outputs.src == 'true'
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com

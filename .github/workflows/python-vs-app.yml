@@ -13,7 +13,6 @@ permissions:
 
 env:
   LD_LIBRARY_PATH: /usr/local/lib
-  FORCE_COLOR: 1
 
 jobs:
   ci:
@@ -76,9 +75,6 @@ jobs:
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        with:
-          env_vars: OS,PYTHON
-          fail_ci_if_error: true
 
       - name: Check src files changes
         uses: dorny/paths-filter@v2

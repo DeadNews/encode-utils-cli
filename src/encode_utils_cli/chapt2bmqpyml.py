@@ -56,7 +56,7 @@ def chapt2bmqpyml(
             yml = Path(f"{ep.parent}/chapters.yaml")
 
         bmk.write_text(", ".join(f"{frame}" for frame in frames) + "\n")
-        qpf.write_text("\n".join(f"{frame} I -1" for frame in frames))
+        qpf.write_text("\n".join(f"{frame} I -1" for frame in frames) + "\n")
 
         chap = {ep.stem: dict(zip(names, frames))}
         if clip is not None:

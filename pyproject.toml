@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "encode-utils-cli"
-version = "0.0.2"
+version = "0.0.3"
 description = "Encode utils collection"
 authors = ["DeadNews <uhjnnn@gmail.com>"]
 license = "MIT"

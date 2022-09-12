@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>encode-utils-cli</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> encode-utils-cli
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-chapt2bmqpyml">chapt2bmqpyml</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-frames-denum">frames-denum</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-mpls2chap">mpls2chap</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-num-frames">num-frames</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-re-chapters">re-chapters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-re-titles">re-titles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-screens2bm">screens2bm</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-vs-screens">vs-screens</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encode-utils-cli-zones-validator">zones-validator</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">encode-utils-cli</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DeadNews/encode-utils-cli/blob/main/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="encode-utils-cli">encode-utils-cli</h1>
+<p>Main entrypoint.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli [OPTIONS] COMMAND [ARGS]...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--version</code></td>
+<td>boolean</td>
+<td>Show the version and exit.</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-chapt2bmqpyml">encode-utils-cli chapt2bmqpyml</h2>
+<p>Convert chapters into yaml, corresponding bookmarks and qp files.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli chapt2bmqpyml [OPTIONS] EPISODES...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-f</code>, <code>--fps</code></td>
+<td>text</td>
+<td>N/A</td>
+<td><code>24000/1001</code></td>
+</tr>
+<tr>
+<td><code>-v</code>, <code>--vid-info</code></td>
+<td>boolean</td>
+<td>Get corresponding videos info.</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>-c</code>, <code>--custom-layout</code></td>
+<td>boolean</td>
+<td>Custom layout.</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-frames-denum">encode-utils-cli frames-denum</h2>
+<p>Sort frames and divide without remainder by the specified divisor.
+The result will be copied to the clipboard.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>frames_denum((16886, 26280), denum=2)
+&lt;&lt;&lt; "8443 13140"
+frames_denum((16886, 26280), denum=.5)
+&lt;&lt;&lt; "33772 52560"</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli frames-denum [OPTIONS] FRAMES...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-d</code>, <code>--denum</code></td>
+<td>float</td>
+<td>N/A</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-mpls2chap">encode-utils-cli mpls2chap</h2>
+<p>Make .txt chapters from .mpls</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli mpls2chap [OPTIONS] MPLS
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-s</code>, <code>--start-ep</code></td>
+<td>integer</td>
+<td>Number of first episode in mpls.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>-d</code>, <code>--out-dir</code></td>
+<td>directory</td>
+<td>Custom out dir.</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-num-frames">encode-utils-cli num-frames</h2>
+<p>Print clip num frames.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli num-frames [OPTIONS] VIDS...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-re-chapters">encode-utils-cli re-chapters</h2>
+<p>Replace chapters names.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli re-chapters [OPTIONS] EPISODES...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c</code>, <code>--config</code></td>
+<td>file</td>
+<td>yaml config.</td>
+<td>_required</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-re-titles">encode-utils-cli re-titles</h2>
+<p>Replace titles names from anidb.
+The result will be copied to the clipboard.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>1       The Prince<code>s New Clothes
+&lt;&lt;&lt; e1: EP1 «The Prince</code>s New Clothes»</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli re-titles [OPTIONS]
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c</code>, <code>--config</code></td>
+<td>file</td>
+<td>toml config.</td>
+<td>_required</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-screens2bm">encode-utils-cli screens2bm</h2>
+<p>Parse screens timestamps hh:mm:ss.xxxx into bookmark format.
+The result will be copied to the clipboard.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>00000 (00:12:34.34) 01.png
+&lt;&lt;&lt; 18086
+00000 (00_00_03.34) 02.png
+&lt;&lt;&lt; 80</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli screens2bm [OPTIONS] SCREENS...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-f</code>, <code>--fps</code></td>
+<td>text</td>
+<td>N/A</td>
+<td><code>24000/1001</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-vs-screens">encode-utils-cli vs-screens</h2>
+<p>Screens via Vapoursynth.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli vs-screens [OPTIONS] VIDS...
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-d</code>, <code>--out-dir</code></td>
+<td>directory</td>
+<td>Custom out dir.</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>-f</code>, <code>--frames</code></td>
+<td>text</td>
+<td>Frames. Format: '1 2 3'.</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>-o</code>, <code>--offset</code></td>
+<td>integer</td>
+<td>Offset for clip.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>-c</code>, <code>--crop</code></td>
+<td>integer</td>
+<td>CropRel args.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>-p</code>, <code>--drop-prop</code></td>
+<td>boolean</td>
+<td>Delete frame prop.</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="encode-utils-cli-zones-validator">encode-utils-cli zones-validator</h2>
+<p>Validate x264/x265 zones.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>encode-utils-cli zones-validator [OPTIONS] ZONES_CONFIG
+</code></pre>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--help</code></td>
+<td>boolean</td>
+<td>Show this message and exit.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/DeadNews/encode-utils-cli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.3.1
+Build Date UTC : 2022-09-12 09:07:56.099955+00:00
+-->

@@ -24,7 +24,7 @@ pyperclip = "^1.8.2"
 PyYAML = "^6.0"
 schema = "^0.7.5"
 tomli = "^2.0.1"
-vapoursynth = ">=61"
+vapoursynth = ">=60"
 
 [tool.poetry.group.ci.dependencies]
 bandit = "^1.7.4"

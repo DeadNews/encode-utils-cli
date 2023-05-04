@@ -21,9 +21,7 @@ from yaml import safe_load
     help="yaml config.",
 )
 def re_chapters(episodes: tuple[Path], config: Path) -> None:
-    """
-    Replace chapters names.
-    """
+    """Replace chapters names."""
     names = safe_load(config.read_text())
 
     for ep in episodes:
@@ -43,7 +41,5 @@ def re_chapters(episodes: tuple[Path], config: Path) -> None:
 
 
 def sub_chapter(chapters: str, num: int, name: str) -> str:
-    """
-    Replace chapter name.
-    """
+    """Replace chapter name."""
     return sub(rf"(CHAPTER{num:02d}NAME=)(.*)", rf"\1{name}", chapters)

@@ -11,8 +11,9 @@ class PlayList(NamedTuple):
 
 def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
     """
-        Parse blu-ray .mpls
-        https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
+    Parse blu-ray `.mpls`.
+
+    https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
 
     >>> [
     >>>     PlayList(name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]),

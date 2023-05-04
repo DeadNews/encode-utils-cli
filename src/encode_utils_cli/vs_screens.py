@@ -33,9 +33,7 @@ def vs_screens(
     crop: int,
     drop_prop: bool,
 ) -> None:
-    """
-    Screens via Vapoursynth.
-    """
+    """Screens via Vapoursynth."""
     frames = frames or " ".join([f"{i}" for i in sample(range(100, 10000), k=5)])
     click.echo(f"Requesting frames: {frames!r}")
 
@@ -53,9 +51,7 @@ def vs_screens(
 
 
 def open_clip(video: Path, drop_prop: bool, offset: int, crop: int) -> VideoNode:
-    """
-    Prepare clip.
-    """
+    """Prepare clip."""
     clip = source(video)
 
     if drop_prop:

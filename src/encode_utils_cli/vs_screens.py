@@ -33,9 +33,7 @@ def vs_screens(
     crop: int,
     drop_prop: bool,
 ) -> None:
-    """
-    Screens via Vapoursynth.
-    """
+    """Screens via Vapoursynth."""
     frames = frames or " ".join([f"{i}" for i in sample(range(100, 10000), k=5)])
     click.echo(f"Requesting frames: {frames!r}")
 
@@ -53,10 +51,9 @@ def vs_screens(
 
 
 def open_clip(video: Path, drop_prop: bool, offset: int, crop: int) -> VideoNode:
-    """
-    Prepare clip.
-    """
+    """Prepare clip."""
     clip = source(video)
+    sd_height = 576
 
     if drop_prop:
         clip = (
@@ -64,7 +61,10 @@ def open_clip(video: Path, drop_prop: bool, offset: int, crop: int) -> VideoNode
             .std.Setframe_prop(prop="_Transfer", delete=True)
             .std.Setframe_prop(prop="_Primaries", delete=True)
         )
-    clip = clip.resize.Spline36(format=RGB24, matrix_in_s="709" if clip.height >= 576 else "601")
+    clip = clip.resize.Spline36(
+        format=RGB24,
+        matrix_in_s="709" if clip.height >= sd_height else "601",
+    )
     if offset:
         clip = clip.std.Trim(offset, clip.num_frames - 1)
     if crop:

@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pytest
 from click.testing import CliRunner
-
 from encode_utils_cli.__main__ import cli
 
 

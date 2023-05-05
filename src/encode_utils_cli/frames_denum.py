@@ -7,8 +7,9 @@ from pyperclip import copy
 @click.argument("frames", nargs=-1, required=True, type=int)
 @click.option("-d", "--denum", type=float, default=2)
 def frames_denum(frames: tuple[int], denum: float) -> None:
-    """
+    r"""
     Sort frames and divide without remainder by the specified divisor.
+
     The result will be copied to the clipboard.
 
     \b

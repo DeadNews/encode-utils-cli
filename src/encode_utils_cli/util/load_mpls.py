@@ -5,14 +5,17 @@ from typing import BinaryIO, NamedTuple
 
 
 class PlayList(NamedTuple):
+    """Represent playlist data."""
+
     name: str
     times: list[int]
 
 
 def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
     """
-        Parse blu-ray .mpls
-        https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
+    Parse blu-ray `.mpls`.
+
+    https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
 
     >>> [
     >>>     PlayList(name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]),
@@ -65,7 +68,7 @@ def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
             a, b = b, item.times
             if a and b[0] < a[-1] < b[-1]:
                 a[-1] = b[0]
-        if b is not None and len(b) > 1 and b[-1] - b[-2] < 90090:
+        if b is not None and len(b) > 1 and b[-1] - b[-2] < 90090:  # noqa: PLR2004
             b.pop()
 
     return items

@@ -18,8 +18,9 @@ from encode_utils_cli.util.timeconv import ts2f
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
 def screens2bm(screens: tuple[PurePath], fps: str) -> None:
-    """
+    r"""
     Parse screens timestamps hh:mm:ss.xxxx into bookmark format.
+
     The result will be copied to the clipboard.
 
     \b

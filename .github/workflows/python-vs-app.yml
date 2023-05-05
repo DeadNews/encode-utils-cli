@@ -92,16 +92,20 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
           poetry run mkdocs gh-deploy --force
 
-  build-release:
-    name: Build and release
+  publish-pypi:
+    name: Build and release to PyPI
     if: github.event_name == 'release' && github.event.action == 'created'
     needs: [ci]
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v3
 
       - name: Install poetry
-        run: pipx install poetry
+        run: |
+          pipx install poetry
+          pipx inject poetry poetry-dynamic-versioning[plugin]
 
       - uses: actions/setup-python@v4
         with:
@@ -111,6 +115,4 @@ jobs:
         run: poetry build
 
       - name: Publish package to PyPI
-        run: poetry publish --no-interaction
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+        uses: pypa/gh-action-pypi-publish@release/v1

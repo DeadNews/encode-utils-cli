@@ -19,7 +19,11 @@ from encode_utils_cli.util.timeconv import ts2f
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
 @click.option(
-    "-v", "--vid-info", is_flag=True, default=False, help="Get corresponding videos info."
+    "-v",
+    "--vid-info",
+    is_flag=True,
+    default=False,
+    help="Get corresponding videos info.",
 )
 @click.option(
     "-c",
@@ -34,9 +38,7 @@ def chapt2bmqpyml(
     vid_info: bool,
     custom_layout: bool,
 ) -> None:
-    """
-    Convert chapters into yaml, corresponding bookmarks and qp files.
-    """
+    """Convert chapters into yaml, corresponding bookmarks and qp files."""
     for ep in episodes:
         chapters = ep.read_text()
 
@@ -58,7 +60,7 @@ def chapt2bmqpyml(
         bmk.write_text(", ".join(f"{frame}" for frame in frames) + "\n")
         qpf.write_text("\n".join(f"{frame} I -1" for frame in frames) + "\n")
 
-        chap = {ep.stem: dict(zip(names, frames))}
+        chap = {ep.stem: dict(zip(names, frames, strict=True))}
         if clip is not None:
             chap[ep.stem]["EOF"] = clip.num_frames
 

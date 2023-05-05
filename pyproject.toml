@@ -23,19 +23,19 @@ encode-utils-cli = "encode_utils_cli._cli:cli"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+vapoursynth = ">=60"
 click = "^8.1.3"
 pyperclip = "^1.8.2"
-PyYAML = "^6.0"
+pyyaml = "^6.0"
 schema = "^0.7.5"
 tomli = "^2.0.1"
-vapoursynth = ">=60"
 
 [tool.poetry.group.ci.dependencies]
 black = "^23.3.0"
 mypy = "^1.2.0"
 poethepoet = "^0.20.0"
 ruff = "^0.0.264"
-types-PyYAML = "^6.0.12.9"
+types-pyyaml = "^6.0.12.9"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
@@ -46,8 +46,8 @@ mkdocs = "^1.4.3"
 mkdocs-click = "^0.8.0"
 
 [tool.poe.tasks]
-ruff = "ruff check . --diff --format github"
-black = "black . --check --diff"
+ruff = "ruff check ."
+black = "black --check ."
 mypy = "mypy ."
 ci.sequence = ["ruff", "black", "mypy"]
 
@@ -74,29 +74,35 @@ allow_untyped_defs = true
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
-markers = ["docker", "slow"]
+markers = ["docker", "key_required"]
 
 [tool.coverage.report]
-exclude_lines = ["if __name__ == .__main__.:"]
+exclude_lines = ["if TYPE_CHECKING:", "if __name__ == .__main__.:"]
 
 [tool.ruff]
 line-length = 99
 select = ["ALL"]
 ignore = [
+  "COM812", # Trailing comma missing
   "D203",   # 1 blank line required before class docstring
   "D212",   # Multi-line docstring summary should start at the first line
   "E501",   # Line too long
   "EXE001", # Shebang is present but file is not executable
-  "FBT001",
-  "COM812", # Trailing comma missing
+  "FBT001", # Boolean positional arg in function definition
+  "FBT002", # Boolean default value in function definition
+  #
+  "D100", # Missing docstring in public module
 ]
 
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/*" = ["ANN", "D", "S"]
+"tests/*" = ["ANN", "D", "PLC1901", "PLR2004", "S"]
 
 [tool.ruff.flake8-comprehensions]
 allow-dict-calls-with-keyword-arguments = false
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
+
+[tool.ruff.pylint]
+max-args = 6

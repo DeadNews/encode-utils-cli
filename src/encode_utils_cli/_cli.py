@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""Entrypoint for cli."""
 import click
 
 from encode_utils_cli.chapt2bmqpyml import chapt2bmqpyml
@@ -15,7 +16,7 @@ from encode_utils_cli.zones_validator import zones_validator
 @click.group(context_settings={"show_default": True, "help_option_names": ["-h", "--help"]})
 @click.version_option()
 def cli() -> None:
-    """Main entrypoint."""
+    """Entrypoint for cli."""
 
 
 cli.add_command(chapt2bmqpyml)

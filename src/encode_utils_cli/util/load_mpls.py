@@ -5,6 +5,8 @@ from typing import BinaryIO, NamedTuple
 
 
 class PlayList(NamedTuple):
+    """Represent playlist data."""
+
     name: str
     times: list[int]
 
@@ -66,7 +68,7 @@ def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
             a, b = b, item.times
             if a and b[0] < a[-1] < b[-1]:
                 a[-1] = b[0]
-        if b is not None and len(b) > 1 and b[-1] - b[-2] < 90090:
+        if b is not None and len(b) > 1 and b[-1] - b[-2] < 90090:  # noqa: PLR2004
             b.pop()
 
     return items

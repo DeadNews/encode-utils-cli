@@ -14,8 +14,6 @@ permissions:
 jobs:
   ci:
     name: CI
-    permissions:
-      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -37,9 +35,7 @@ jobs:
           cache: poetry
 
       - name: Install dependencies
-        run: |
-          poetry env use ${{ matrix.python-version }}
-          poetry install
+        run: poetry install
 
       - name: Check code quality
         run: poetry run poe ci
@@ -49,21 +45,6 @@ jobs:
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-
-      - name: Check src files changes
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            src:
-              - 'src/**'
-
-      - name: Generate and Publish docs
-        if: github.ref == 'refs/heads/main' && steps.changes.outputs.src == 'true'
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          poetry run mkdocs gh-deploy --force
 
   publish-pypi:
     name: Build and release to PyPI
@@ -87,3 +68,38 @@ jobs:
 
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  deploy-mkdocs:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup vapoursynth
+        uses: deadnews/setup-vapoursynth@main
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          cache: poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Check src files changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'src/**'
+
+      - name: Deploy docs
+        if: github.ref == 'refs/heads/main' && steps.changes.outputs.src == 'true'
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          poetry run mkdocs gh-deploy --force

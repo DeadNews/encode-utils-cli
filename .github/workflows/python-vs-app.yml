@@ -1,4 +1,4 @@
-name: CI/CD
+name: Main
 
 on:
   push:
@@ -12,19 +12,41 @@ permissions:
   contents: read
 
 jobs:
-  ci:
-    name: CI
+  code-quality:
+    name: Check code quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup vapoursynth
+        uses: deadnews/setup-vapoursynth@v0.0.1
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          cache: poetry
+
+      - name: Install deps
+        run: poetry install
+
+      - name: Check code quality
+        run: poetry run poe ci
+
+  run-tests:
+    name: Run tests
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         python-version: ["3.10", "3.11"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup vapoursynth
-        uses: deadnews/setup-vapoursynth@main
+        uses: deadnews/setup-vapoursynth@v0.0.1
 
       - name: Install poetry
         run: pipx install poetry
@@ -34,22 +56,20 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: poetry
 
-      - name: Install dependencies
+      - name: Install deps
         run: poetry install
-
-      - name: Check code quality
-        run: poetry run poe ci
 
       - name: Run tests
         run: poetry run pytest --cov-report=xml
 
       - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         uses: codecov/codecov-action@v3
 
   publish-pypi:
     name: Build and release to PyPI
     if: github.event_name == 'release' && github.event.action == 'created'
-    needs: [ci]
+    needs: [code-quality, run-tests]
     permissions:
       id-token: write
     runs-on: ubuntu-latest
@@ -67,39 +87,4 @@ jobs:
         run: poetry build
 
       - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
-  deploy-mkdocs:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup vapoursynth
-        uses: deadnews/setup-vapoursynth@main
-
-      - name: Install poetry
-        run: pipx install poetry
-
-      - uses: actions/setup-python@v4
-        with:
-          cache: poetry
-
-      - name: Install dependencies
-        run: poetry install
-
-      - name: Check src files changes
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            src:
-              - 'src/**'
-
-      - name: Deploy docs
-        if: github.ref == 'refs/heads/main' && steps.changes.outputs.src == 'true'
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          poetry run mkdocs gh-deploy --force
+        uses: pypa/gh-action-pypi-publish@release/v1.8

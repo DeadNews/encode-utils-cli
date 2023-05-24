@@ -10,13 +10,14 @@ permissions:
   contents: write
 
 jobs:
-  deploy-mkdocs:
+  docs:
+    name: Deploy docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup vapoursynth
-        uses: deadnews/setup-vapoursynth@main
+        uses: deadnews/setup-vapoursynth@v0.0.1
 
       - name: Install poetry
         run: pipx install poetry

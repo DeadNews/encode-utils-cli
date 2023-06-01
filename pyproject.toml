@@ -30,7 +30,7 @@ pyyaml = "^6.0"
 schema = "^0.7.5"
 tomli = "^2.0.1"
 
-[tool.poetry.group.ci.dependencies]
+[tool.poetry.group.lint.dependencies]
 black = "^23.3.0"
 mypy = "^1.2.0"
 poethepoet = "^0.20.0"

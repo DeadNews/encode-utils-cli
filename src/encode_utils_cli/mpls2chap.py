@@ -41,7 +41,3 @@ def mpls2chap(mpls: Path, start_ep: int, out_dir: Path) -> None:
             for index, time in enumerate(ep.times)
         ]
         Path(f"{out_dir}/e{number}.txt").write_text("\n".join(chapters))
-
-
-if __name__ == "__main__":
-    mpls2chap()

@@ -11,11 +11,11 @@ def runner():
     return CliRunner()
 
 
-def test_help(runner):
+def test_help(runner: CliRunner):
     assert runner.invoke(cli, ["--help"]).exit_code == 0
 
 
-def test_frames_denum(runner):
+def test_frames_denum(runner: CliRunner):
     assert (
         runner.invoke(cli, ["frames-denum", "16886", "26280", "--denum", "2"]).output
         == "8443 13140\n"
@@ -26,14 +26,14 @@ def test_frames_denum(runner):
     )
 
 
-def test_re_titles(runner):
+def test_re_titles(runner: CliRunner):
     assert (
         runner.invoke(cli, ["re-titles", "-c", "tests/resources/titles.toml"]).output
         == "e1: EP1 «The Prince`s New Clothes»\ne2: EP2 «The Prince and Kage»\ne3: EP3 «The New King»\ne4: EP4 «His First Journey»\ne5: EP5 «Intertwining Plots»\ne6: EP6 «The King of the Underworld»\ne7: EP7 «The Prince`s Apprenticeship»\ne8: EP8 «The Sacrifice of Dreams»\ne9: EP9 «The Queen and the Shield»\n\nop1: OP1 «Boy»\nop2: OP2 «Hadaka no Yuusha»\ned1: ED1 «Oz.»\ned2: ED2 «Flare»\n\n"
     )
 
 
-def test_screens2bm(runner):
+def test_screens2bm(runner: CliRunner):
     assert (
         runner.invoke(
             cli,
@@ -47,7 +47,7 @@ def test_screens2bm(runner):
     )
 
 
-def test_zones_validator(runner):
+def test_zones_validator(runner: CliRunner):
     assert runner.invoke(cli, ["zones-validator", "tests/resources/zones.txt"]).output == ""
     assert (
         runner.invoke(cli, ["zones-validator", "tests/resources/zones_broken.txt"]).output
@@ -55,7 +55,7 @@ def test_zones_validator(runner):
     )
 
 
-def test_mpls2chap(runner, tmp_path):
+def test_mpls2chap(runner: CliRunner, tmp_path):
     assert (
         runner.invoke(
             cli, ["mpls2chap", "tests/resources/00000.mpls", "-s", "4", "-d", tmp_path]

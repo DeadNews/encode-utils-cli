@@ -60,7 +60,7 @@ jobs:
         run: poetry install
 
       - name: Run tests
-        run: poetry run pytest --cov-report=xml
+        run: poetry run poe test
 
       - name: Upload coverage to Codecov
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'

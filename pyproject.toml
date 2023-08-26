@@ -31,10 +31,10 @@ schema = "^0.7.5"
 tomli = "^2.0.1"
 
 [tool.poetry.group.lint.dependencies]
-black = "^23.3.0"
-mypy = "^1.4.1"
-poethepoet = "^0.20.0"
-ruff = "^0.0.275"
+black = "^23.7.0"
+mypy = "^1.5.1"
+poethepoet = "^0.22.0"
+ruff = "^0.0.286"
 types-pyyaml = "^6.0.12.9"
 
 [tool.poetry.group.test.dependencies]
@@ -42,7 +42,7 @@ pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "^1.4.3"
+mkdocs = "^1.5.2"
 mkdocs-click = "^0.8.0"
 
 [tool.poetry-dynamic-versioning]

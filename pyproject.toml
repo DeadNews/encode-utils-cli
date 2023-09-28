@@ -23,27 +23,27 @@ encode-utils-cli = "encode_utils_cli._cli:cli"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-vapoursynth = ">=60"
-click = "^8.1.3"
+vapoursynth = "^64"
+click = "^8.1.7"
 pyperclip = "^1.8.2"
-pyyaml = "^6.0"
+pyyaml = "^6.0.1"
 schema = "^0.7.5"
 tomli = "^2.0.1"
 
 [tool.poetry.group.lint.dependencies]
-black = "^23.3.0"
-mypy = "^1.4.1"
-poethepoet = "^0.20.0"
-ruff = "^0.0.275"
-types-pyyaml = "^6.0.12.9"
+black = "^23.9.1"
+mypy = "^1.5.1"
+poethepoet = "^0.22.0"
+ruff = "^0.0.291"
+types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.4.0"
+pytest = "^7.4.2"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "^1.4.3"
-mkdocs-click = "^0.8.0"
+mkdocs = "^1.5.3"
+mkdocs-click = "^0.8.1"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -88,6 +88,7 @@ allow_untyped_defs = true
 
 [tool.ruff]
 line-length = 99
+target-version = "py310" # until poetry v2
 select = ["ALL"]
 ignore = [
   "COM812",  # Trailing comma missing

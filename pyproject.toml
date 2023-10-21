@@ -31,10 +31,10 @@ schema = "^0.7.5"
 tomli = "^2.0.1"
 
 [tool.poetry.group.lint.dependencies]
-black = "^23.9.1"
-mypy = "^1.5.1"
-poethepoet = "^0.23.0"
-ruff = "^0.0.291"
+black = "^23.10.0"
+mypy = "^1.6.1"
+poethepoet = "^0.24.1"
+ruff = "^0.1.1"
 types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]

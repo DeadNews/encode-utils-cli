@@ -1,4 +1,4 @@
-.PHONY: test
+.PHONY: all clean test checks
 
 install-all: install pc-install
 
@@ -21,3 +21,6 @@ lint:
 
 test:
 	poetry run poe test
+
+docs-serve:
+	poetry run mkdocs serve

@@ -33,7 +33,7 @@ tomli = "^2.0.1"
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
 poethepoet = "^0.24.4"
-ruff = "^0.1.11"
+ruff = "^0.1.13"
 types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]

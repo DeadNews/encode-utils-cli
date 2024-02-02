@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from pathlib import Path
 
 from vapoursynth import VideoNode, core

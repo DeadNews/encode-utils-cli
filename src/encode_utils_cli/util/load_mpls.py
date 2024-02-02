@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from io import SEEK_CUR
 from struct import unpack
 from typing import BinaryIO, NamedTuple

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from fractions import Fraction
 from pathlib import PurePath
 from re import search

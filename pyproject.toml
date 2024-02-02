@@ -33,6 +33,7 @@ tomli = "^2.0.1"
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
 poethepoet = "^0.24.4"
+pyright = "^1.1.349"
 ruff = "^0.1.13"
 types-pyyaml = "^6.0.12.12"
 
@@ -51,6 +52,7 @@ style = "semver"
 
 [tool.poe.tasks]
 mypy = "mypy ."
+pyright = "pyright ."
 ruff = "ruff check ."
 ruff-fmt = "ruff format ."
 lint.sequence = ["ruff", "ruff-fmt", "mypy"]
@@ -95,8 +97,6 @@ ignore = [
   "COM812",  # Trailing comma missing
   "D203",    # 1 blank line required before class docstring
   "D212",    # Multi-line docstring summary should start at the first line
-  "E501",    # Line too long
-  "EXE001",  # Shebang is present but file is not executable
   "FBT001",  # Boolean positional arg in function definition
   "FBT002",  # Boolean default value in function definition
   "ISC001",  # Checks for implicitly concatenated strings on a single line.
@@ -107,16 +107,14 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/*" = ["ANN", "D", "PLC1901", "PLR2004", "S"]
-
-[tool.ruff.lint.flake8-comprehensions]
-allow-dict-calls-with-keyword-arguments = false
+"tests/*" = ["ANN", "D", "E501", "PLC1901", "PLR2004", "S"]
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-[tool.ruff.lint.pydocstyle]
-convention = "google"
-
 [tool.ruff.lint.pycodestyle]
 max-doc-length = 129
+max-line-length = 129
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

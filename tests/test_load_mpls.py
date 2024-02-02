@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from pathlib import Path
 
 from encode_utils_cli.util.load_mpls import PlayList, load_mpls

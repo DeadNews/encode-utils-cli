@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from fractions import Fraction
 
 from encode_utils_cli.util.timeconv import seconds2f, seconds2ts, ts2f, ts2seconds

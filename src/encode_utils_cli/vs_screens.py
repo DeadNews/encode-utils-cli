@@ -1,7 +1,7 @@
 from pathlib import Path
 from random import sample
 
-import rich_click as click
+import click
 from vapoursynth import RGB24, VideoNode, core
 
 from encode_utils_cli.util.source import source
@@ -32,7 +32,7 @@ def vs_screens(
     crop: int,
     drop_prop: bool,
 ) -> None:
-    """Screens via vapoursynth."""
+    """Generate screen frames from videos."""
     frames = frames or " ".join([f"{i}" for i in sample(range(100, 10000), k=5)])
     click.echo(f"Requesting frames: {frames!r}")
 

@@ -1,16 +1,20 @@
-import rich_click as click
-from pyperclip import copy
+import click
+from pyperclip import copy as clipboard_copy
 
 
 @click.command()
 @click.argument("frames", nargs=-1, required=True, type=int)
 @click.option("-d", "--denum", type=float, default=2, help="Divisor.")
-def frames_denum(frames: tuple[int], denum: float) -> None:
-    """Sort frames and divide without remainder by the specified divisor.
+@click.option(
+    "--copy/--no-copy",
+    is_flag=True,
+    default=True,
+    help="Copy the result to the clipboard.",
+)
+def frames_denum(frames: tuple[int], denum: float, copy: bool) -> None:
+    """Divide the frames by the specified divisor.
 
-    The result will be copied to the clipboard.
-
-    \b
+    \f
     Example:
     ```py
     >>> frames_denum((16886, 26280), denum=2)
@@ -22,4 +26,5 @@ def frames_denum(frames: tuple[int], denum: float) -> None:
     divided = " ".join(f"{int(frame // denum)}" for frame in sorted(frames, key=int))
 
     click.echo(divided)
-    copy(divided)
+    if copy:
+        clipboard_copy(divided)

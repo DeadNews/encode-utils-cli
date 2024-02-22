@@ -1,7 +1,6 @@
 site_name: encode-utils-cli
-repo_url: https://github.com/DeadNews/encode-utils-cli
+repo_url: https://github.com/deadnews/encode-utils-cli
 edit_uri: blob/main/docs/
-# theme: readthedocs
 theme:
   name: material
   palette:

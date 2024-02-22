@@ -1,8 +1,8 @@
 from pathlib import Path
 from re import MULTILINE, sub
 
-import rich_click as click
-from pyperclip import copy
+import click
+from pyperclip import copy as clipboard_copy
 from tomli import loads
 
 
@@ -12,14 +12,18 @@ from tomli import loads
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help="Config in `toml` format.",
+    help="Config in TOML format.",
 )
-def re_titles(config: Path) -> None:
-    """Replace titles names from `anidb`.
+@click.option(
+    "--copy/--no-copy",
+    is_flag=True,
+    default=True,
+    help="Copy the result to the clipboard.",
+)
+def re_titles(config: Path, copy: bool) -> None:
+    """Reformat titles from AniDB.
 
-    The result will be copied to the clipboard.
-
-    \b
+    \f
     Example:
     ```
     >>> 1 	The Prince`s New Clothes
@@ -37,4 +41,5 @@ def re_titles(config: Path) -> None:
     titles = sub(r"^S(\d+) ", r"s\1: S\1 ", titles, flags=MULTILINE)
 
     click.echo(titles)
-    copy(titles)
+    if copy:
+        clipboard_copy(titles)

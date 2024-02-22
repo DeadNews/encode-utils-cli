@@ -4,21 +4,32 @@ from typing import BinaryIO, NamedTuple
 
 
 class PlayList(NamedTuple):
-    """Represent playlist data."""
+    """Represents a playlist.
+
+    Attributes:
+        name (str): The name of the playlist.
+        times (list[int]): The list of times associated with the playlist.
+    """
 
     name: str
     times: list[int]
 
 
 def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
-    """Parse blu-ray `.mpls`.
+    """Load and parse an MPLS (Blu-ray playlist) file.
 
-    https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
+    Args:
+        f: The file object representing the MPLS file.
+        fix_overlap: Whether to fix overlapping timestamps. Defaults to True.
 
-    >>> [
-    >>>     PlayList(name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]),
-    >>>     PlayList(name="00015", times=[189000000, 200779267, 223110326, 249510450, 253620806]),
-    >>> ]
+    Returns:
+        A list of PlayList objects representing the playlists in the MPLS file.
+
+    Examples:
+        >>> [
+        >>>     PlayList(name="00014", times=[189000000, 194469213, 225901239, 249525465, 253620806]),
+        >>>     PlayList(name="00015", times=[189000000, 200779267, 223110326, 249510450, 253620806]),
+        >>> ]
     """
 
     def int_be(data: bytes) -> int:

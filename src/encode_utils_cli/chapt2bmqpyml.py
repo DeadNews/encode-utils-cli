@@ -2,7 +2,7 @@ from fractions import Fraction
 from pathlib import Path
 from re import findall, sub
 
-import rich_click as click
+import click
 from yaml import dump
 
 from encode_utils_cli.util.source import source
@@ -16,7 +16,7 @@ from encode_utils_cli.util.timeconv import ts2f
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
-@click.option("-f", "--fps", type=str, default="24000/1001", help="FPS.")
+@click.option("-f", "--fps", type=str, default="24000/1001")
 @click.option(
     "-v",
     "--vid-info",
@@ -37,7 +37,7 @@ def chapt2bmqpyml(
     vid_info: bool,
     custom_layout: bool,
 ) -> None:
-    """Convert chapters into `yaml`, corresponding `bookmarks` and `qp` files."""
+    """Generate bookmarks and chapters YAML file from chapters text file."""
     for ep in episodes:
         chapters = ep.read_text()
 

@@ -2,8 +2,8 @@ from fractions import Fraction
 from pathlib import PurePath
 from re import search
 
-import rich_click as click
-from pyperclip import copy
+import click
+from pyperclip import copy as clipboard_copy
 
 from encode_utils_cli.util.timeconv import ts2f
 
@@ -16,14 +16,18 @@ from encode_utils_cli.util.timeconv import ts2f
     type=click.Path(dir_okay=False, path_type=PurePath),
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
-def screens2bm(screens: tuple[PurePath], fps: str) -> None:
-    """Parse screens timestamps `hh:mm:ss.xxxx` into `bookmark` format.
+@click.option(
+    "--copy/--no-copy",
+    is_flag=True,
+    default=True,
+    help="Copy the result to the clipboard.",
+)
+def screens2bm(screens: tuple[PurePath], fps: str, copy: bool) -> None:
+    """Convert `hh:mm:ss.xxxx` in screens filenames to bookmark frames.
 
-    The result will be copied to the clipboard.
-
-    \b
+    \f
     Example:
-    ```console
+    ```
     >>> 00000 (00:12:34.34) 01.png
     <<< 18086
     >>> 00000 (00_00_03.34) 02.png
@@ -37,4 +41,5 @@ def screens2bm(screens: tuple[PurePath], fps: str) -> None:
     ]
     bookmark = ", ".join(frames) + "\n"
     click.echo(bookmark)
-    copy(bookmark)
+    if copy:
+        clipboard_copy(bookmark)

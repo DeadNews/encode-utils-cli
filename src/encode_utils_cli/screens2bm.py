@@ -2,7 +2,7 @@ from fractions import Fraction
 from pathlib import PurePath
 from re import search
 
-import click
+import rich_click as click
 from pyperclip import copy
 
 from encode_utils_cli.util.timeconv import ts2f
@@ -17,13 +17,13 @@ from encode_utils_cli.util.timeconv import ts2f
 )
 @click.option("-f", "--fps", type=str, default="24000/1001")
 def screens2bm(screens: tuple[PurePath], fps: str) -> None:
-    """Parse screens timestamps hh:mm:ss.xxxx into bookmark format.
+    """Parse screens timestamps `hh:mm:ss.xxxx` into `bookmark` format.
 
     The result will be copied to the clipboard.
 
     \b
     Example:
-    ```
+    ```console
     >>> 00000 (00:12:34.34) 01.png
     <<< 18086
     >>> 00000 (00_00_03.34) 02.png

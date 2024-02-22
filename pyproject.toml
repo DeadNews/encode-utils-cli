@@ -27,22 +27,24 @@ vapoursynth = "^65"
 click = "^8.1.7"
 pyperclip = "^1.8.2"
 pyyaml = "^6.0.1"
+rich-click = "^1.7.3"
 schema = "^0.7.5"
 
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
 poethepoet = "^0.24.4"
-pyright = "^1.1.350"
+pyright = "^1.1.351"
 ruff = "^0.2.1"
 types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.0.0"
+pytest = "^8.0.1"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-click = "^0.8.1"
+mkdocs-material = "^9.5.10"
 
 [tool.poetry-dynamic-versioning]
 enable = true

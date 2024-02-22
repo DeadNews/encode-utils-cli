@@ -1,7 +1,7 @@
 from pathlib import Path
 from re import findall, sub
 
-import click
+import rich_click as click
 from yaml import safe_load
 
 
@@ -17,7 +17,7 @@ from yaml import safe_load
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help="yaml config.",
+    help="Config in `yaml` format.",
 )
 def re_chapters(episodes: tuple[Path], config: Path) -> None:
     """Replace chapters names."""

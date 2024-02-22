@@ -1,8 +1,13 @@
 site_name: encode-utils-cli
 repo_url: https://github.com/DeadNews/encode-utils-cli
 edit_uri: blob/main/docs/
-theme: readthedocs
+# theme: readthedocs
+theme:
+  name: material
+  palette:
+    scheme: slate
 
 markdown_extensions:
   - attr_list
   - mkdocs-click
+  - pymdownx.superfences

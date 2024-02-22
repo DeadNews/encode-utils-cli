@@ -1,5 +1,5 @@
 """Entrypoint for cli."""
-import click
+import rich_click as click
 
 from encode_utils_cli.chapt2bmqpyml import chapt2bmqpyml
 from encode_utils_cli.frames_denum import frames_denum
@@ -12,8 +12,9 @@ from encode_utils_cli.vs_screens import vs_screens
 from encode_utils_cli.zones_validator import zones_validator
 
 
-@click.group(context_settings={"show_default": True})
+@click.group(context_settings={"max_content_width": 100, "show_default": True})
 @click.version_option()
+@click.rich_config(help_config=click.RichHelpConfiguration(width=100, use_markdown=True))
 def cli() -> None:
     """Entrypoint for cli."""
 

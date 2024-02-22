@@ -1,7 +1,7 @@
 from pathlib import Path
 from random import sample
 
-import click
+import rich_click as click
 from vapoursynth import RGB24, VideoNode, core
 
 from encode_utils_cli.util.source import source
@@ -20,7 +20,7 @@ from encode_utils_cli.util.source import source
     type=click.Path(file_okay=False, path_type=Path),
     help="Custom out dir.",
 )
-@click.option("-f", "--frames", type=str, help="Frames. Format: '1 2 3'.")
+@click.option("-f", "--frames", type=str, help='Frames. Format: `"1 2 3"`.')
 @click.option("-o", "--offset", type=int, default=0, help="Offset for clip.")
 @click.option("-c", "--crop", type=int, default=0, help="CropRel args.")
 @click.option("-p", "--drop-prop", is_flag=True, help="Delete frame prop.")
@@ -32,7 +32,7 @@ def vs_screens(
     crop: int,
     drop_prop: bool,
 ) -> None:
-    """Screens via Vapoursynth."""
+    """Screens via vapoursynth."""
     frames = frames or " ".join([f"{i}" for i in sample(range(100, 10000), k=5)])
     click.echo(f"Requesting frames: {frames!r}")
 

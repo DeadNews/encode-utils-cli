@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import click
+import rich_click as click
 
 from encode_utils_cli.util.source import source
 

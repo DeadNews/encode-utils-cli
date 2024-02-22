@@ -1,10 +1,10 @@
-import click
+import rich_click as click
 from pyperclip import copy
 
 
 @click.command()
 @click.argument("frames", nargs=-1, required=True, type=int)
-@click.option("-d", "--denum", type=float, default=2)
+@click.option("-d", "--denum", type=float, default=2, help="Divisor.")
 def frames_denum(frames: tuple[int], denum: float) -> None:
     """Sort frames and divide without remainder by the specified divisor.
 
@@ -12,7 +12,7 @@ def frames_denum(frames: tuple[int], denum: float) -> None:
 
     \b
     Example:
-    ```
+    ```py
     >>> frames_denum((16886, 26280), denum=2)
     <<< "8443 13140"
     >>> frames_denum((16886, 26280), denum=.5)

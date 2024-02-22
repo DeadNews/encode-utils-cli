@@ -1,7 +1,7 @@
 from pathlib import Path
 from re import MULTILINE, sub
 
-import click
+import rich_click as click
 from pyperclip import copy
 from tomli import loads
 
@@ -12,10 +12,10 @@ from tomli import loads
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help="toml config.",
+    help="Config in `toml` format.",
 )
 def re_titles(config: Path) -> None:
-    """Replace titles names from anidb.
+    """Replace titles names from `anidb`.
 
     The result will be copied to the clipboard.
 

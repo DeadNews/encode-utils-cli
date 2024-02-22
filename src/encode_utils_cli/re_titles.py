@@ -15,15 +15,17 @@ from tomli import loads
     help="toml config.",
 )
 def re_titles(config: Path) -> None:
-    r"""
-    Replace titles names from anidb.
+    """Replace titles names from anidb.
 
     The result will be copied to the clipboard.
 
     \b
+    Example:
+    ```
     >>> 1 	The Prince`s New Clothes
     <<< e1: EP1 «The Prince`s New Clothes»
-    """
+    ```
+    """  # noqa: D301
     titles = loads(config.read_text())["titles"]
 
     titles = sub(r"	", r" ", titles)

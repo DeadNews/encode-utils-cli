@@ -11,8 +11,7 @@ class PlayList(NamedTuple):
 
 
 def load_mpls(f: BinaryIO, fix_overlap: bool = True) -> list[PlayList]:
-    """
-    Parse blu-ray `.mpls`.
+    """Parse blu-ray `.mpls`.
 
     https://gist.github.com/dk00/0a0634c5666cf1b8ab9f
 

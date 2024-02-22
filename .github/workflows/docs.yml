@@ -4,7 +4,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "src/**/*.py"
+      - docs/**/*.md
+      - src/**/*.py
+      - mkdocs.yml
 
 permissions:
   contents: write

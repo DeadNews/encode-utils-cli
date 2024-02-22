@@ -19,11 +19,11 @@ pc-run:
 lint:
 	poetry run poe lint
 
-test:
-	poetry run poe test
-
 pyright:
 	poetry run poe pyright
+
+test:
+	poetry run poe test
 
 docs-serve:
 	poetry run mkdocs serve

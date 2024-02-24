@@ -27,12 +27,11 @@ def screens2bm(screens: tuple[PurePath], fps: str, copy: bool) -> None:
 
     \f
     Example:
-    ```
-    >>> 00000 (00:12:34.34) 01.png
-    <<< 18086
-    >>> 00000 (00_00_03.34) 02.png
-    <<< 80
-    ```
+
+        >>> 00000 (00:12:34.34) 01.png
+        <<< 18086
+        >>> 00000 (00_00_03.34) 02.png
+        <<< 80
     """  # noqa: D301
     frames = [
         f"{ts2f(ts=ts.group(1).replace('_', ':'), fps=Fraction(fps))}"

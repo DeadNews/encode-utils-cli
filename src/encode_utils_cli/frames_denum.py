@@ -16,12 +16,11 @@ def frames_denum(frames: tuple[int], denum: float, copy: bool) -> None:
 
     \f
     Example:
-    ```py
-    >>> frames_denum((16886, 26280), denum=2)
-    <<< "8443 13140"
-    >>> frames_denum((16886, 26280), denum=.5)
-    <<< "33772 52560"
-    ```
+
+        >>> frames_denum((16886, 26280), denum=2)
+        <<< "8443 13140"
+        >>> frames_denum((16886, 26280), denum=.5)
+        <<< "33772 52560"
     """  # noqa: D301
     divided = " ".join(f"{int(frame // denum)}" for frame in sorted(frames, key=int))
 

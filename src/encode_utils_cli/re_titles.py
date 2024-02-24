@@ -25,10 +25,9 @@ def re_titles(config: Path, copy: bool) -> None:
 
     \f
     Example:
-    ```
-    >>> 1 	The Prince`s New Clothes
-    <<< e1: EP1 «The Prince`s New Clothes»
-    ```
+
+        >>> 1 	The Prince`s New Clothes
+        <<< e1: EP1 «The Prince`s New Clothes»
     """  # noqa: D301
     titles = loads(config.read_text())["titles"]
 

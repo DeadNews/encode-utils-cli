@@ -9,8 +9,9 @@ description = "Encode utils collection"
 authors = ["DeadNews <aurczpbgr@mozmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/DeadNews/encode-utils-cli"
-repository = "https://github.com/DeadNews/encode-utils-cli"
+homepage = "https://github.com/deadnews/encode-utils-cli"
+repository = "https://github.com/deadnews/encode-utils-cli"
+documentation = "https://deadnews.github.io/encode-utils-cli"
 keywords = ["cli", "encode", "vapoursynth", "mpls"]
 classifiers = [
   "Environment :: Console",
@@ -37,13 +38,13 @@ ruff = "^0.2.1"
 types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.0.1"
+pytest = "^8.0.2"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-click = "^0.8.1"
-mkdocs-material = "^9.5.10"
+mkdocs-material = "^9.5.11"
 
 [tool.poetry-dynamic-versioning]
 enable = true

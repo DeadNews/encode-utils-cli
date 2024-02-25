@@ -2,7 +2,7 @@ from pathlib import Path
 from re import MULTILINE, sub
 
 import click
-from pyperclip import copy
+from pyperclip import copy as clipboard_copy
 from tomli import loads
 
 
@@ -12,18 +12,23 @@ from tomli import loads
     "--config",
     required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
-    help="toml config.",
+    help="Config in TOML format.",
 )
-def re_titles(config: Path) -> None:
-    r"""
-    Replace titles names from anidb.
+@click.option(
+    "--copy/--no-copy",
+    is_flag=True,
+    default=True,
+    help="Copy the result to the clipboard.",
+)
+def re_titles(config: Path, copy: bool) -> None:
+    """Reformat titles from AniDB.
 
-    The result will be copied to the clipboard.
+    \f
+    Example:
 
-    \b
-    >>> 1 	The Prince`s New Clothes
-    <<< e1: EP1 «The Prince`s New Clothes»
-    """
+        >>> 1 	The Prince`s New Clothes
+        <<< e1: EP1 «The Prince`s New Clothes»
+    """  # noqa: D301
     titles = loads(config.read_text())["titles"]
 
     titles = sub(r"	", r" ", titles)
@@ -35,4 +40,5 @@ def re_titles(config: Path) -> None:
     titles = sub(r"^S(\d+) ", r"s\1: S\1 ", titles, flags=MULTILINE)
 
     click.echo(titles)
-    copy(titles)
+    if copy:
+        clipboard_copy(titles)

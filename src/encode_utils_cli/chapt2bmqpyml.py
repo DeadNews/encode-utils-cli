@@ -37,7 +37,7 @@ def chapt2bmqpyml(
     vid_info: bool,
     custom_layout: bool,
 ) -> None:
-    """Convert chapters into yaml, corresponding bookmarks and qp files."""
+    """Generate bookmarks and chapters YAML file from chapters text file."""
     for ep in episodes:
         chapters = ep.read_text()
 

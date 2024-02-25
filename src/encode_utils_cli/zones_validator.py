@@ -10,7 +10,7 @@ from schema import Regex, Schema
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
 def zones_validator(zones_config: Path) -> None:
-    """Validate x264/x265 zones."""
+    """Validate x264/x265 zones configuration file."""
     text = zones_config.read_text()
 
     targe_lines = [

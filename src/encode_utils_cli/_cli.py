@@ -12,7 +12,7 @@ from encode_utils_cli.vs_screens import vs_screens
 from encode_utils_cli.zones_validator import zones_validator
 
 
-@click.group(context_settings={"show_default": True})
+@click.group(context_settings={"max_content_width": 120, "show_default": True})
 @click.version_option()
 def cli() -> None:
     """Entrypoint for cli."""

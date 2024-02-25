@@ -2,7 +2,7 @@ from fractions import Fraction
 
 
 def seconds2ts(s: float) -> str:
-    """Convert seconds in timestamp hh:mm:ss.xxx."""
+    """Convert seconds to timestamp in the format `hh:mm:ss.xxx`."""
     m = s // 60
     s %= 60
     h = m // 60
@@ -11,7 +11,7 @@ def seconds2ts(s: float) -> str:
 
 
 def ts2seconds(ts: str) -> float:
-    """Convert timestamp hh:mm:ss.xxxx to seconds."""
+    """Convert timestamp `hh:mm:ss.xxxx` to seconds."""
     h, m, s = map(float, ts.split(":"))
     return h * 3600 + m * 60 + s
 
@@ -22,5 +22,5 @@ def seconds2f(s: float, fps: Fraction) -> int:
 
 
 def ts2f(ts: str, fps: Fraction) -> int:
-    """Convert a timestamp hh:mm:ss.xxxx in number of frames."""
+    """Convert a timestamp `hh:mm:ss.xxxx` in number of frames."""
     return seconds2f(s=ts2seconds(ts), fps=fps)

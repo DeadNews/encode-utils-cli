@@ -4,3 +4,4 @@
     :style: table
     :prog_name: encode-utils-cli
     :remove_ascii_art: True
+    :list_subcommands: True

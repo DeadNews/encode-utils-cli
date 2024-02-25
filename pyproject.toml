@@ -9,8 +9,9 @@ description = "Encode utils collection"
 authors = ["DeadNews <aurczpbgr@mozmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/DeadNews/encode-utils-cli"
-repository = "https://github.com/DeadNews/encode-utils-cli"
+homepage = "https://github.com/deadnews/encode-utils-cli"
+repository = "https://github.com/deadnews/encode-utils-cli"
+documentation = "https://deadnews.github.io/encode-utils-cli"
 keywords = ["cli", "encode", "vapoursynth", "mpls"]
 classifiers = [
   "Environment :: Console",
@@ -32,17 +33,18 @@ schema = "^0.7.5"
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
 poethepoet = "^0.24.4"
-pyright = "^1.1.350"
+pyright = "^1.1.351"
 ruff = "^0.2.1"
 types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.0.0"
+pytest = "^8.0.2"
 pytest-cov = "^4.1.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-click = "^0.8.1"
+mkdocs-material = "^9.5.11"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -83,6 +85,11 @@ warn_unused_ignores = true
 module = ["tests.*"]
 disallow_untyped_defs = false
 
+[tool.pyright]
+include = ["src"]
+ignore = ["tests"]
+typeCheckingMode = "standard"
+
 [tool.ruff]
 line-length = 99
 target-version = "py311" # Until Poetry v2
@@ -94,8 +101,6 @@ line-ending = "lf"
 select = ["ALL"]
 ignore = [
   "COM812",  # Trailing comma missing
-  "D203",    # 1 blank line required before class docstring
-  "D212",    # Multi-line docstring summary should start at the first line
   "FBT001",  # Boolean positional arg in function definition
   "FBT002",  # Boolean default value in function definition
   "ISC001",  # Checks for implicitly concatenated strings on a single line.

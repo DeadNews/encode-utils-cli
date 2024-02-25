@@ -26,7 +26,7 @@ from encode_utils_cli.util.timeconv import seconds2ts
     help="Custom out dir.",
 )
 def mpls2chap(mpls: Path, start_ep: int, out_dir: Path) -> None:
-    """Make .txt chapters from .mpls."""
+    """Convert MPLS file to chapter files."""
     out_dir = Path(mpls.parent) if out_dir is None else out_dir
 
     with mpls.open("rb") as data:

@@ -1,6 +1,10 @@
 site_name: encode-utils-cli
 repo_url: https://github.com/deadnews/encode-utils-cli
 edit_uri: blob/main/docs/
+
+nav:
+  - CLI Reference: index.md
+
 theme:
   name: material
   palette:

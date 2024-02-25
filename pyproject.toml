@@ -23,12 +23,13 @@ classifiers = [
 encode-utils-cli = "encode_utils_cli._cli:cli"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 vapoursynth = "^65"
 click = "^8.1.7"
 pyperclip = "^1.8.2"
 pyyaml = "^6.0.1"
 schema = "^0.7.5"
+toml = { version = "^0.10.2", python = "<3.11" }
 
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
@@ -92,7 +93,7 @@ typeCheckingMode = "standard"
 
 [tool.ruff]
 line-length = 99
-target-version = "py311" # Until Poetry v2
+target-version = "py310" # Until Poetry v2
 
 [tool.ruff.format]
 line-ending = "lf"

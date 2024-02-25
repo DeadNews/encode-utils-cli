@@ -92,7 +92,7 @@ jobs:
 
   docs:
     name: Deploy docs
-    if: github.event_name == 'release' && github.event.action == 'created'
+    if: github.event_name == 'release' && github.event.action == 'created' && github.event.release.prerelease != true
     needs: [lint, tests]
     permissions:
       contents: write

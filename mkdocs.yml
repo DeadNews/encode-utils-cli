@@ -5,6 +5,9 @@ edit_uri: blob/main/docs/
 nav:
   - CLI Reference: index.md
 
+watch:
+  - src
+
 theme:
   name: material
   palette:

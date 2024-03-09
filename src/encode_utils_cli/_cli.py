@@ -1,4 +1,5 @@
 """Entrypoint for cli."""
+
 import click
 
 from encode_utils_cli.chapt2bmqpyml import chapt2bmqpyml

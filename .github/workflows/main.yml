@@ -90,12 +90,10 @@ jobs:
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@81e9d935c883d0b210363ab89cf05f3894778450 # v1.8.14
 
-  docs:
-    name: Deploy docs
-    if: github.event_name == 'release' && github.event.action == 'created' && github.event.release.prerelease != true
+  docs-build:
+    name: Build docs
+    if: github.event_name == 'release' && github.event.action == 'created'
     needs: [lint, tests]
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -113,8 +111,29 @@ jobs:
       - name: Install deps
         run: poetry install
 
-      - name: Deploy docs
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          poetry run mkdocs gh-deploy --force
+      - name: Build docs
+        run: poetry run mkdocs build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  docs-deploy:
+    name: Deploy docs
+    if: github.event.release.prerelease != true
+    needs: [docs-build]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

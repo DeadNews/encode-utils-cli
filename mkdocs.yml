@@ -3,10 +3,14 @@ repo_url: https://github.com/deadnews/encode-utils-cli
 edit_uri: blob/main/docs/
 
 nav:
-  - CLI Reference: index.md
+  - Overview: index.md
+  - CLI Reference: cli.md
+  # defer to gen-files + literate-nav
+  - API reference: reference/
 
 watch:
   - src
+  - README.md
 
 theme:
   name: material
@@ -27,11 +31,50 @@ theme:
         icon: material/brightness-4
   features:
     - content.code.copy
+    - content.tooltips
+    - navigation.indexes
+    - navigation.sections
     - search.highlight
+    - search.suggest
+    - toc.follow
 
 markdown_extensions:
   - attr_list
   - mkdocs-click
+  - pymdownx.snippets
   - pymdownx.superfences
   - toc:
       permalink: true
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - docs/scripts/gen_ref_nav.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          import:
+            - https://docs.python.org/3/objects.inv
+          options:
+            docstring_options:
+              ignore_init_summary: true
+            docstring_section_style: table
+            docstring_style: google
+            filters: ["!^_"]
+            heading_level: 1
+            inherited_members: true
+            members_order: source
+            merge_init_into_class: true
+            separate_signature: true
+            show_root_full_path: false
+            show_root_heading: true
+            show_signature_annotations: true
+            show_submodules: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            summary: true

@@ -18,4 +18,4 @@ pipx install encode-utils-cli
 
 ## CLI Reference
 
-<https://deadnews.github.io/encode-utils-cli>
+<https://deadnews.github.io/encode-utils-cli/cli/>

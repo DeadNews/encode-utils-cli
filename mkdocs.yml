@@ -3,10 +3,12 @@ repo_url: https://github.com/deadnews/encode-utils-cli
 edit_uri: blob/main/docs/
 
 nav:
-  - CLI Reference: index.md
+  - Overview: index.md
+  - CLI Reference: cli.md
 
 watch:
   - src
+  - README.md
 
 theme:
   name: material
@@ -27,11 +29,17 @@ theme:
         icon: material/brightness-4
   features:
     - content.code.copy
+    - content.tooltips
+    - navigation.indexes
+    - navigation.sections
     - search.highlight
+    - search.suggest
+    - toc.follow
 
 markdown_extensions:
   - attr_list
   - mkdocs-click
+  - pymdownx.snippets
   - pymdownx.superfences
   - toc:
       permalink: true

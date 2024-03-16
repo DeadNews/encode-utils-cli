@@ -30,12 +30,21 @@ theme:
         name: Switch to system preference
         icon: material/brightness-4
   features:
+    - content.action.edit
     - content.action.view
+    - content.code.annotate
     - content.code.copy
+    - content.code.select
     - content.tooltips
+    - navigation.expand
+    - navigation.footer
     - navigation.indexes
     - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
     - search.highlight
+    - search.share
     - search.suggest
     - toc.follow
 
@@ -58,8 +67,6 @@ plugins:
       handlers:
         python:
           paths: [src]
-          import:
-            - https://docs.python.org/3/objects.inv
           options:
             docstring_options:
               ignore_init_summary: true
@@ -79,3 +86,5 @@ plugins:
             show_symbol_type_toc: true
             signature_crossrefs: true
             summary: true
+          import:
+            - https://docs.python.org/3/objects.inv

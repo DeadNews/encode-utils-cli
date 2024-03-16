@@ -1,19 +1,20 @@
-.PHONY: all clean test checks
+.PHONY: all clean default install lock update checks pc test docs run
 
-install-all: install pc-install
+default: checks
 
 install:
+	pre-commit install
 	poetry install --sync
 
-pc-install:
-	pre-commit install
+lock:
+	poetry lock --no-update
 
-update-latest:
+update:
 	poetry up --latest
 
-checks: pc-run install lint test
+checks: pc install lint test
 
-pc-run:
+pc:
 	pre-commit run -a
 
 lint:
@@ -22,5 +23,5 @@ lint:
 test:
 	poetry run poe test
 
-docs-serve:
+docs:
 	poetry run mkdocs serve

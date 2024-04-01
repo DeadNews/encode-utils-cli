@@ -61,7 +61,7 @@ def chapt2bmqpyml(
 
         chap = {ep.stem: dict(zip(names, frames, strict=True))}
         if clip is not None:
-            chap[ep.stem]["EOF"] = clip.num_frames
+            chap[ep.stem]["OF"] = clip.num_frames
 
         with yml.open("a") as stream:
             dump(data=chap, stream=stream, sort_keys=False)

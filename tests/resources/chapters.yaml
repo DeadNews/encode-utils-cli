@@ -4,7 +4,7 @@ e1:
   Part_B: 18414
   Part_C: 29211
   Next: 33902
-  EOF: 34022
+  OF: 34022
 e2:
   Avant: 0
   OP: 2014
@@ -12,7 +12,7 @@ e2:
   Part_B: 15395
   ED: 31746
   Next: 33904
-  EOF: 34024
+  OF: 34024
 e3:
   Avant: 0
   OP: 1296
@@ -21,7 +21,7 @@ e3:
   ED: 27494
   Part_C: 29652
   Next: 33903
-  EOF: 34023
+  OF: 34023
 e4:
   Avant: 0
   OP: 912
@@ -30,7 +30,7 @@ e4:
   ED: 28576
   Part_C: 30734
   Next: 33902
-  EOF: 34022
+  OF: 34022
 e5:
   Avant: 0
   OP: 1440
@@ -39,7 +39,7 @@ e5:
   ED: 26685
   Part_C: 28842
   Next: 33901
-  EOF: 34021
+  OF: 34021
 e6:
   Avant: 0
   OP: 672
@@ -48,7 +48,7 @@ e6:
   ED: 27503
   Part_C: 29661
   Next: 33904
-  EOF: 34024
+  OF: 34024
 e7:
   Avant: 0
   OP: 960
@@ -57,7 +57,7 @@ e7:
   ED: 30617
   Part_C: 32752
   Next: 33902
-  EOF: 34022
+  OF: 34022
 e8:
   Avant: 0
   OP: 792
@@ -65,4 +65,4 @@ e8:
   Part_B: 15274
   ED: 31745
   Next: 33903
-  EOF: 34023
+  OF: 34023

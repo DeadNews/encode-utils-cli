@@ -3,10 +3,10 @@ name: Main
 on:
   push:
     branches: [main]
+    tags:
+      - "v*"
   pull_request:
     branches: [main]
-  release:
-    types: [created]
 
 permissions:
   contents: read
@@ -66,13 +66,37 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
         uses: codecov/codecov-action@4fe8c5f003fae66aa5ebb77cfd3e7bfbbda0b6b0 # v3.1.5
 
-  publish-pypi:
-    name: Release to PyPI
-    if: github.event_name == 'release' && github.event.action == 'created'
+  github-deploy:
+    name: Release to GitHub
+    if: github.ref_type == 'tag'
     needs: [lint, tests]
+    environment: github-releases
+    permissions:
+      contents: write
+    env:
+      CHANGELOG: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md
+      PRERELEASE: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        run: |
+          gh release create ${{ github.ref_name }} \
+            --title ${{ github.ref_name }} \
+            --notes="See [the CHANGELOG](${{ env.CHANGELOG }}) for more details." \
+            --draft=${{ env.PRERELEASE }} \
+            --prerelease=${{ env.PRERELEASE }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  pypi-deploy:
+    name: Release to PyPI
+    if: github.ref_type == 'tag'
+    needs: [lint, tests]
+    environment: pypi
     permissions:
       id-token: write
-    environment: pypi
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -92,7 +116,7 @@ jobs:
 
   docs-build:
     name: Build docs
-    if: github.event_name == 'release' && github.event.action == 'created'
+    if: github.ref_type == 'tag'
     needs: [lint, tests]
     runs-on: ubuntu-latest
     steps:
@@ -124,7 +148,7 @@ jobs:
 
   docs-deploy:
     name: Deploy docs
-    if: github.event.release.prerelease != true
+    if: true && !contains(github.ref, 'alpha')
     needs: [docs-build]
     environment:
       name: github-pages

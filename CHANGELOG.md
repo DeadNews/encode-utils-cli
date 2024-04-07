@@ -1,12 +1,13 @@
 # Changelog
 
-## [1.0.3-alpha.0](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.2...v1.0.3-alpha.0) - 2024-04-07
+## [1.0.3-beta.0](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.2...v1.0.3-beta.0) - 2024-04-07
 
 ### 📚 Documentation
 
 - _(changelog)_ add `git-cliff` - ([c9dd758](https://github.com/DeadNews/encode-utils-cli/commit/c9dd75882e0f36297fc1c6e4ed1bc70df5923a39))
 - _(changelog)_ add `git-cliff` - ([6764a0f](https://github.com/DeadNews/encode-utils-cli/commit/6764a0f34f729e769e0fb22e98671ecf2abe3928))
 - _(mkdocs)_ update config - ([dfcc2e2](https://github.com/DeadNews/encode-utils-cli/commit/dfcc2e267e6d67c2c7fb3950552a9c03dbb6eca7))
+- _(readme)_ update badges - ([bcaadad](https://github.com/DeadNews/encode-utils-cli/commit/bcaadad921413fb38f07c2ada6fce9aa90bddf26))
 - _(readme)_ update badges - ([1c674a1](https://github.com/DeadNews/encode-utils-cli/commit/1c674a13988c50df584fa7bdb5b89f4d1c6bbb2d))
 - _(readme)_ add badges - ([197b5ca](https://github.com/DeadNews/encode-utils-cli/commit/197b5ca0872fca4beddc5fbdad1a2bbd81118fa2))
 - update `mkdocs` config - ([94c7d75](https://github.com/DeadNews/encode-utils-cli/commit/94c7d75226e545c9d5f498c644ee4be2fd76be64))

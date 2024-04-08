@@ -2,19 +2,17 @@
 
 > Encode utils collection
 
-[![PyPI version](https://img.shields.io/pypi/v/encode-utils-cli)](https://pypi.org/project/encode-utils-cli)
-[![GitHub Release](https://img.shields.io/github/v/release/deadnews/encode-utils-cli)](https://github.com/DeadNews/encode-utils-cli/releases/latest)
-[![Documentation](https://img.shields.io/badge/docs-github-blue.svg)](https://deadnews.github.io/encode-utils-cli)
-[![Main](https://github.com/DeadNews/encode-utils-cli/actions/workflows/main.yml/badge.svg)](https://github.com/DeadNews/encode-utils-cli/actions/workflows/main.yml)
-[![pre-commit.ci](https://results.pre-commit.ci/badge/github/DeadNews/encode-utils-cli/main.svg)](https://results.pre-commit.ci/latest/github/DeadNews/encode-utils-cli/main)
-[![codecov](https://codecov.io/gh/DeadNews/encode-utils-cli/branch/main/graph/badge.svg?token=OCZDZIYPMC)](https://codecov.io/gh/DeadNews/encode-utils-cli)
-
-**[Installation](#installation)** • **[CLI Reference](https://deadnews.github.io/encode-utils-cli/cli)**
+[![PyPI: Version](https://img.shields.io/pypi/v/encode-utils-cli?logo=pypi&logoColor=white)](https://pypi.org/project/encode-utils-cli)
+[![GitHub: Release](https://img.shields.io/github/v/release/deadnews/encode-utils-cli?logo=github&logoColor=white)](https://github.com/deadnews/encode-utils-cli/releases/latest)
+[![Documentation](https://img.shields.io/badge/documentation-gray.svg?logo=materialformkdocs&logoColor=white)](https://deadnews.github.io/encode-utils-cli)
+[![CI: pre-commit](https://results.pre-commit.ci/badge/github/DeadNews/encode-utils-cli/main.svg)](https://results.pre-commit.ci/latest/github/deadnews/encode-utils-cli/main)
+[![CI: Main](https://img.shields.io/github/actions/workflow/status/deadnews/encode-utils-cli/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/encode-utils-cli/actions/workflows/main.yml)
+[![CI: Coverage](https://img.shields.io/codecov/c/github/deadnews/encode-utils-cli?token=OCZDZIYPMC&logo=codecov&logoColor=white)](https://app.codecov.io/gh/deadnews/encode-utils-cli)
 
 ## Installation
 
 ```sh
-pip install encode-utils-cli
-# or
 pipx install encode-utils-cli
+# or
+pip install encode-utils-cli
 ```

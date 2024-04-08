@@ -4,12 +4,14 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: index.md
+  - Changelog: changelog.md
   - API reference: reference/ # defer to gen-files + literate-nav
-  - CLI Reference: cli.md
+  - CLI Reference: reference-cli.md
 
 watch:
   - src
   - README.md
+  - CHANGELOG.md
 
 theme:
   name: material
@@ -38,6 +40,7 @@ theme:
     - navigation.expand
     - navigation.footer
     - navigation.indexes
+    - navigation.instant
     - navigation.sections
     - navigation.tabs
     - navigation.top

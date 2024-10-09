@@ -1,14 +1,12 @@
 # Changelog
 
-## [1.0.3-beta.0](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.2...v1.0.3-beta.0) - 2024-04-07
+## [1.0.3](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.2...v1.0.3) - 2024-10-09
 
 ### 📚 Documentation
 
-- _(changelog)_ add `git-cliff` - ([c9dd758](https://github.com/DeadNews/encode-utils-cli/commit/c9dd75882e0f36297fc1c6e4ed1bc70df5923a39))
-- _(changelog)_ add `git-cliff` - ([6764a0f](https://github.com/DeadNews/encode-utils-cli/commit/6764a0f34f729e769e0fb22e98671ecf2abe3928))
+- _(changelog)_ update `git-cliff` config - ([21d1f9f](https://github.com/DeadNews/encode-utils-cli/commit/21d1f9f67345c4a41d590a2ceb9b0d166078992d))
+- _(changelog)_ add `git-cliff` ([#129](https://github.com/DeadNews/encode-utils-cli/issues/129)) - ([c24def4](https://github.com/DeadNews/encode-utils-cli/commit/c24def4caa6697cb18d4604502d92eee03d8f82a))
 - _(mkdocs)_ update config - ([dfcc2e2](https://github.com/DeadNews/encode-utils-cli/commit/dfcc2e267e6d67c2c7fb3950552a9c03dbb6eca7))
-- _(readme)_ update badges - ([bcaadad](https://github.com/DeadNews/encode-utils-cli/commit/bcaadad921413fb38f07c2ada6fce9aa90bddf26))
-- _(readme)_ update badges - ([1c674a1](https://github.com/DeadNews/encode-utils-cli/commit/1c674a13988c50df584fa7bdb5b89f4d1c6bbb2d))
 - _(readme)_ add badges - ([197b5ca](https://github.com/DeadNews/encode-utils-cli/commit/197b5ca0872fca4beddc5fbdad1a2bbd81118fa2))
 - update `mkdocs` config - ([94c7d75](https://github.com/DeadNews/encode-utils-cli/commit/94c7d75226e545c9d5f498c644ee4be2fd76be64))
 - update `mkdocs` config - ([2a40371](https://github.com/DeadNews/encode-utils-cli/commit/2a403716cc5b7eeaab74e632b035116636ea782d))
@@ -17,6 +15,19 @@
 ### 🧹 Chores
 
 - _(makefile)_ update ([#128](https://github.com/DeadNews/encode-utils-cli/issues/128)) - ([4c9a9bb](https://github.com/DeadNews/encode-utils-cli/commit/4c9a9bbbb77ab1be40091065d69c93cce924c88f))
+- _(typos)_ ignore short words - ([993297f](https://github.com/DeadNews/encode-utils-cli/commit/993297f204618ddf0e60ad7a63952acc72890bdc))
+
+### ⚙️ CI/CD
+
+- _(github)_ add `python:3.13` to tests matrix ([#173](https://github.com/DeadNews/encode-utils-cli/issues/173)) - ([01c1bd5](https://github.com/DeadNews/encode-utils-cli/commit/01c1bd56f43003c59eb893e074ee0c7ac81cca14))
+- _(github)_ update `action-setup-vs` to `main` branch - ([203e693](https://github.com/DeadNews/encode-utils-cli/commit/203e69316a8422274acd9355beaf3f18ea22f0e6))
+
+### ⬆️ Dependencies
+
+- _(deps)_ update dependency tomli to v2.0.2 ([#166](https://github.com/DeadNews/encode-utils-cli/issues/166)) - ([1b8ee39](https://github.com/DeadNews/encode-utils-cli/commit/1b8ee39945b57800ce5c008d9e2e1f2930b228d8))
+- _(deps)_ update dependency pyyaml to v6.0.2 ([#155](https://github.com/DeadNews/encode-utils-cli/issues/155)) - ([e60d376](https://github.com/DeadNews/encode-utils-cli/commit/e60d3760d2c289da2eecd700fd56ad47736d0404))
+- _(deps)_ update dependency pyperclip to v1.9.0 ([#145](https://github.com/DeadNews/encode-utils-cli/issues/145)) - ([8d74228](https://github.com/DeadNews/encode-utils-cli/commit/8d742286a56ee6e46581d16522c275423ce93ca3))
+- _(deps)_ update dependency schema to v0.7.7 ([#139](https://github.com/DeadNews/encode-utils-cli/issues/139)) - ([d4ab167](https://github.com/DeadNews/encode-utils-cli/commit/d4ab16780b634c6cdf75da6180d8258a08c0d833))
 
 ## [1.0.2](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.1...v1.0.2) - 2024-03-15
 
@@ -75,7 +86,7 @@
 - _(deps)_ update dependency vapoursynth to v65 ([#110](https://github.com/DeadNews/encode-utils-cli/issues/110)) - ([3462495](https://github.com/DeadNews/encode-utils-cli/commit/3462495a13319fda858fe830cc3673c954ed3722))
 - _(deps)_ update ([#90](https://github.com/DeadNews/encode-utils-cli/issues/90)) - ([d8813cc](https://github.com/DeadNews/encode-utils-cli/commit/d8813cc6cc9af9c16151307d109f461f1d1e1179))
 
-## [0.0.4] - 2023-05-06
+## [0.0.4](https://github.com/DeadNews/encode-utils-cli/commits/v0.0.4) - 2023-05-06
 
 ### 🚀 Features
 

@@ -32,9 +32,9 @@ schema = "^0.7.5"
 
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.11.2"
-poethepoet = "^0.28.0"
-pyright = "^1.1.383"
-ruff = "^0.6.7"
+poethepoet = "^0.29.0"
+pyright = "^1.1.384"
+ruff = "^0.6.9"
 types-pyyaml = "^6.0.12.20240917"
 
 [tool.poetry.group.test.dependencies]

@@ -1,9 +1,9 @@
 from pathlib import Path
 from re import MULTILINE, sub
+from tomllib import loads
 
 import click
 from pyperclip import copy as clipboard_copy
-from tomli import loads
 
 
 @click.command()

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.3...v1.0.4) - 2024-10-09
+
+### 🧹 Chores
+
+- replace `tomli` with `tomlib` ([#174](https://github.com/DeadNews/encode-utils-cli/issues/174)) - ([1d4c5f3](https://github.com/DeadNews/encode-utils-cli/commit/1d4c5f3ef22bcaf955e991a1d34df5cb96789e6a))
+
 ## [1.0.3](https://github.com/DeadNews/encode-utils-cli/compare/v1.0.2...v1.0.3) - 2024-10-09
 
 ### 📚 Documentation

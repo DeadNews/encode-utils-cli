@@ -31,10 +31,10 @@ pyyaml = "^6.0.2"
 schema = "^0.7.5"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "^1.15.0"
+mypy = "^1.16.0"
 poethepoet = "^0.34.0"
-pyright = "^1.1.400"
-ruff = "^0.11.8"
+pyright = "^1.1.401"
+ruff = "^0.11.12"
 types-pyyaml = "^6.0.12.20240917"
 
 [tool.poetry.group.test.dependencies]
@@ -46,9 +46,9 @@ mkdocs = "^1.6.1"
 mkdocs-click = "^0.9.0"
 mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.2"
-mkdocs-material = "^9.6.12"
+mkdocs-material = "^9.6.14"
 mkdocstrings = "^0.29.1"
-mkdocstrings-python = "^1.16.10"
+mkdocstrings-python = "^1.16.11"
 
 [tool.poetry-dynamic-versioning]
 enable = true
